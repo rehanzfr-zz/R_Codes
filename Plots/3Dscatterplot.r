@@ -34,7 +34,7 @@ S3D <- scatterplot3d(x, y, z,
                      #font.lab=1,
                      #lty.axis=2, 
                      #lty.grid=2,
-                     #color=colors[grps],                          # Will be ignored if highlight.3d = TRUE
+                     #color=colors[grps],     # Will be ignored if highlight.3d = TRUE
                      #pch=shapes,
                      #xlim=c(-1,2), 
                      #ylim=c(-1,2),
@@ -45,25 +45,25 @@ S3D <- scatterplot3d(x, y, z,
                      #box=FALSE,
                      #angle = 45,
                      #axis=TRUE,                              
-                     #tick.marks=TRUE,                             # only if axis = TRUE
+                     #tick.marks=TRUE,         # only if axis = TRUE
                      #label.tick.marks=TRUE,
                      #lab=c(-1,1,1),
                      #lab.z=
                      #lwd=5,
-                     #mar = c(5, 5, 4, 3)
+                     #mar= c(5,5,4,3)
 )
 
 # Add labels to the points (OPTIONAL)
 S3D.coords <- S3D$xyz.convert(x, y, z)
-text(S3D.coords$x, S3D.coords$y,                                   # x and y coordinates
-     labels=iris$Species,                                          # text on plot
+text(S3D.coords$x, S3D.coords$y,                # x and y coordinates
+     labels=iris$Species,                       # text on plot
      cex=.5, pos=4)                                        
 
 # add the legend (OPTIONAL)
-legend("topleft",                                                  # topleft, right, bottom
+legend("topleft",                               # topleft, right, bottom
        inset=.05,
        legend = levels(iris$Species),
-       bty="n", cex=1,                                             # suppress legend box, shrink text 50%
+       bty="n", cex=1,                          # suppress legend box, shrink text 50%
        pch = c(16, 17, 18),
        col =  colors, 
        title="Type",
