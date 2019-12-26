@@ -7,10 +7,13 @@ library("scatterplot3d")
 # For Colors Visit http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 colors <- c("chartreuse", "#E69F00", "#56B4E9")
 
+# Lets Import Data (Its just like you have your data in csv file so think like it)
+imported_data <- read.csv("IRIS.csv", header = TRUE)
+
 # Iris dataset
-z <- iris$Sepal.Length
-x <- iris$Sepal.Width
-y <- iris$Petal.Length
+z <- imported_data$Sepal.Length
+x <- imported_data$Sepal.Width
+y <- imported_data$Petal.Length
 
 # Make Sctterplot
 S3D <- scatterplot3d(x, y, z, 
