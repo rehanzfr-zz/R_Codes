@@ -1,3 +1,5 @@
+# R version 3.6.1
+
 #Install Scatterplot3D
 install.packages("scatterplot3d") 
 
@@ -51,9 +53,6 @@ S3D <- scatterplot3d(x, y, z,
                      #mar = c(5, 5, 4, 3)
 )
 
-
-
-
 # Add labels to the points (OPTIONAL)
 S3D.coords <- S3D$xyz.convert(x, y, z)
 text(S3D.coords$x, S3D.coords$y,                                   # x and y coordinates
@@ -78,3 +77,5 @@ legend("topleft",                                                  # topleft, ri
 lm <- lm(z ~ x + y)
 S3D$plane3d(lm, draw_polygon = TRUE, draw_lines = FALSE, 
             polygon_args = list(col = adjustcolor( "slategray1", alpha.f = 0.2)),lty= "dotted" , lwd=0.7)
+
+sessionInfo()
