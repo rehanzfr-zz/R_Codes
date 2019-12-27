@@ -17,6 +17,13 @@ z <- imported_data$Sepal.Length
 x <- imported_data$Sepal.Width
 y <- imported_data$Petal.Length
 
+# For coloring according to the Grouping 
+grps<- as.factor(imported_data[,5])
+# For Different shapes for different values in Specieis column in imported_data
+shapes<- c(16,17,18)
+shapes<- shapes[as.numeric(imported_data$Species)]
+shapes
+
 # Make Sctterplot
 S3D <- scatterplot3d(x, y, z,
                      main="3D Scatter Plot",
@@ -25,32 +32,30 @@ S3D <- scatterplot3d(x, y, z,
                      ylab="Y-axis", 
                      zlab="Z-axis",
                      #highlight.3d=TRUE, 
-                     #col.axis="blue",
-                     #col.grid="lightblue",
-                     #col.lab="royalblue",
-                     #cex.axis =1, 
-                     #cex.lab=1,
-                     #font.axis=2 , 
-                     #font.lab=1,
-                     #lty.axis=2, 
-                     #lty.grid=2,
-                     #color=colors[grps],     # Will be ignored if highlight.3d = TRUE
-                     #pch=shapes,
-                     #xlim=c(-1,2), 
-                     #ylim=c(-1,2),
-                     #zlim=c(-9, 10),
-                     #type="h",
-                     #scale.y,
-                     #grid=TRUE, 
-                     #box=FALSE,
-                     #angle = 45,
-                     #axis=TRUE,                              
-                     #tick.marks=TRUE,         # only if axis = TRUE
-                     #label.tick.marks=TRUE,
-                     #lab=c(-1,1,1),
-                     #lab.z=
-                     #lwd=5,
-                     #mar= c(5,5,4,3)
+                     col.axis="blue",
+                     col.grid="lightblue",
+                     col.lab="royalblue",
+                     cex.axis =1, 
+                     cex.lab=1,
+                     font.axis=2 , 
+                     font.lab=1,
+                     lty.axis=2, 
+                     lty.grid=2,
+                     color=colors[grps],     # Will be ignored if highlight.3d = TRUE
+                     pch=shapes,
+                     xlim=c(-1,2), 
+                     ylim=c(-1,2),
+                     zlim=c(-9, 10),
+                     type="h",
+                     scale.y,
+                     grid=TRUE, 
+                     box=FALSE,
+                     angle = 45,
+                     axis=TRUE,                              
+                     tick.marks=TRUE,         # only if axis = TRUE
+                     label.tick.marks=TRUE,
+                     lwd=1,
+                     mar= c(5,5,4,3)
 )
 
 # Add labels to the points (OPTIONAL)
@@ -78,4 +83,3 @@ lm <- lm(z ~ x + y)
 S3D$plane3d(lm, draw_polygon = TRUE, draw_lines = FALSE, 
             polygon_args = list(col = adjustcolor( "slategray1", alpha.f = 0.2)),lty= "dotted" , lwd=0.7)
 
-sessionInfo()
