@@ -1,0 +1,128 @@
+city,lat,lng,country,iso2,admin,capital,population,population_proper
+Karachi,24.9056,67.0822,Pakistan,PK,Sindh,admin,12130000,11624219
+Lahore,31.549722,74.343611,Pakistan,PK,Punjab,admin,6577000,6310888
+Faisalābād,31.416667,73.083333,Pakistan,PK,Punjab,minor,2617000,2506595
+Serai,34.73933,72.335655,Pakistan,PK,Khyber Pakhtunkhwa,,1860310,1860310
+Rāwalpindi,33.597331,73.047904,Pakistan,PK,Punjab,minor,1858000,1743101
+Multān,30.196789,71.478241,Pakistan,PK,Punjab,minor,1522000,1437230
+Gujrānwāla,32.155667,74.187052,Pakistan,PK,Punjab,minor,1513000,1384471
+Hyderābād City,25.396891,68.377183,Pakistan,PK,Sindh,minor,1459000,1386330
+Peshāwar,34.008,71.578488,Pakistan,PK,Khyber Pakhtunkhwa,admin,1303000,1218773
+Abbottābād,34.1463,73.211684,Pakistan,PK,Khyber Pakhtunkhwa,minor,1183647,881000
+Islamabad,33.69,73.0551,Pakistan,PK,Islāmābād,primary,780000,601600
+Quetta,30.184138,67.00141,Pakistan,PK,Balochistān,admin,768000,733675
+Bannu,32.985414,70.602701,Pakistan,PK,Khyber Pakhtunkhwa,minor,622419,550000
+Bahāwalpur,29.4,71.683333,Pakistan,PK,Punjab,minor,552607,552607
+Sargodha,32.083611,72.671111,Pakistan,PK,Punjab,minor,542603,542603
+Siālkot City,32.499101,74.52502,Pakistan,PK,Punjab,minor,477396,477396
+Sukkur,27.705164,68.857383,Pakistan,PK,Sindh,minor,417767,417767
+Lārkāna,27.558985,68.212035,Pakistan,PK,Sindh,minor,364033,364033
+Sheikhupura,31.713056,73.978333,Pakistan,PK,Punjab,minor,361303,361303
+Mīrpur Khās,25.5251,69.0159,Pakistan,PK,Sindh,minor,356435,215657
+Rahīmyār Khān,28.419482,70.302386,Pakistan,PK,Punjab,,353203,353203
+Kohāt,33.581958,71.449291,Pakistan,PK,Khyber Pakhtunkhwa,minor,343027,151427
+Jhang Sadr,31.269811,72.316867,Pakistan,PK,Punjab,,341210,341210
+Gujrāt,32.574204,74.075423,Pakistan,PK,Punjab,minor,301506,301506
+Bardār,34.163737,72.011571,Pakistan,PK,Khyber Pakhtunkhwa,,300424,300424
+Kasūr,31.115556,74.446667,Pakistan,PK,Punjab,minor,290643,290643
+Dera Ghāzi Khān,30.056142,70.634766,Pakistan,PK,Punjab,minor,236093,236093
+Masīwāla,30.683333,73.066667,Pakistan,PK,Punjab,,235695,235695
+Nawābshāh,26.248334,68.409554,Pakistan,PK,Sindh,minor,229504,229504
+Okāra,30.808056,73.445833,Pakistan,PK,Punjab,minor,223648,223648
+Gilgit,35.920007,74.313656,Pakistan,PK,Gilgit-Baltistan,minor,216760,31633
+Chiniot,31.72,72.978889,Pakistan,PK,Punjab,minor,201781,201781
+Sādiqābād,28.30623,70.130646,Pakistan,PK,Punjab,,189876,189876
+Turbat,26.001224,63.048491,Pakistan,PK,Balochistān,minor,147791,75694
+Dera Ismāīl Khān,31.832691,70.902398,Pakistan,PK,Khyber Pakhtunkhwa,minor,101616,31737
+Chaman,30.917689,66.45259,Pakistan,PK,Balochistān,,88568,88568
+Zhob,31.340817,69.449304,Pakistan,PK,Balochistān,minor,88356,50537
+Mehra,34.312817,73.220525,Pakistan,PK,Khyber Pakhtunkhwa,,66486,66486
+Parachinār,33.895672,70.098875,Pakistan,PK,Federally Administered Tribal Areas,,55685,55685
+Gwādar,25.12163,62.325411,Pakistan,PK,Balochistān,minor,51901,23364
+Kundiān,32.457747,71.478918,Pakistan,PK,Punjab,,35406,35406
+Shahdād Kot,27.847263,67.906789,Pakistan,PK,Sindh,minor,,
+Harīpur,33.999967,72.934093,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Matiāri,25.59709,68.4467,Pakistan,PK,Sindh,minor,,
+Dera Allāhyār,28.373529,68.350778,Pakistan,PK,Balochistān,minor,,
+Lodhrān,29.540507,71.63357,Pakistan,PK,Punjab,minor,,
+Batgrām,34.679637,73.026299,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Thatta,24.747449,67.923528,Pakistan,PK,Sindh,minor,,
+Bāgh,33.981106,73.776084,Pakistan,PK,Azad Kashmir,minor,,
+Badīn,24.655995,68.836997,Pakistan,PK,Sindh,minor,,
+Mānsehra,34.330232,73.196788,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Ziārat,30.382444,67.725624,Pakistan,PK,Balochistān,minor,,
+Muzaffargarh,30.072576,71.193788,Pakistan,PK,Punjab,minor,,
+Tando Allāhyār,25.462626,68.719233,Pakistan,PK,Sindh,minor,,
+Dera Murād Jamāli,28.546568,68.223081,Pakistan,PK,Balochistān,minor,,
+Karak,33.116334,71.093536,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Mardan,34.197943,72.04965,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Uthal,25.807222,66.621944,Pakistan,PK,Balochistān,minor,,
+Nankāna Sāhib,31.4475,73.697222,Pakistan,PK,Punjab,minor,,
+Bārkhān,29.897727,69.525584,Pakistan,PK,Balochistān,minor,,
+Hāfizābād,32.067857,73.685449,Pakistan,PK,Punjab,minor,,
+Kotli,33.518362,73.902203,Pakistan,PK,Azad Kashmir,minor,,
+Loralai,30.370512,68.597949,Pakistan,PK,Balochistān,minor,,
+Dera Bugti,29.036188,69.158493,Pakistan,PK,Balochistān,minor,,
+Jhang City,31.305684,72.325941,Pakistan,PK,Punjab,minor,,
+Sāhīwāl,30.666667,73.1,Pakistan,PK,Punjab,minor,,
+Sānghar,26.046558,68.9481,Pakistan,PK,Sindh,minor,,
+Pākpattan,30.341044,73.386642,Pakistan,PK,Punjab,minor,,
+Chakwāl,32.933376,72.858531,Pakistan,PK,Punjab,minor,,
+Khushāb,32.296667,72.3525,Pakistan,PK,Punjab,minor,,
+Ghotki,28.00604,69.316077,Pakistan,PK,Sindh,minor,,
+Kohlu,29.896505,69.253235,Pakistan,PK,Balochistān,minor,,
+Khuzdār,27.738385,66.643365,Pakistan,PK,Balochistān,minor,,
+Awārān,26.456768,65.231436,Pakistan,PK,Balochistān,minor,,
+Nowshera,34.015828,71.981232,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Chārsadda,34.148221,71.740604,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Qila Abdullāh,30.728035,66.661174,Pakistan,PK,Balochistān,minor,,
+Bahāwalnagar,29.998659,73.253604,Pakistan,PK,Punjab,minor,,
+Dādu,26.730334,67.776896,Pakistan,PK,Sindh,minor,,
+Alīābad,36.307028,74.615449,Pakistan,PK,Gilgit-Baltistan,minor,,
+Lakki Marwat,32.607953,70.911416,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Chilās,35.412867,74.104068,Pakistan,PK,Gilgit-Baltistan,minor,,
+Pishin,30.581762,66.994061,Pakistan,PK,Balochistān,minor,,
+Tānk,32.217071,70.383154,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Chitrāl,35.851802,71.786358,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Qila Saifullāh,30.700766,68.359843,Pakistan,PK,Balochistān,minor,,
+Shikārpur,27.957057,68.637886,Pakistan,PK,Sindh,minor,,
+Panjgūr,26.971861,64.094594,Pakistan,PK,Balochistān,minor,,
+Mastung,29.799656,66.845527,Pakistan,PK,Balochistān,minor,,
+Kalāt,29.026629,66.593607,Pakistan,PK,Balochistān,minor,,
+Gandāvā,28.613207,67.485643,Pakistan,PK,Balochistān,minor,,
+Khānewāl,30.301731,71.932124,Pakistan,PK,Punjab,minor,,
+Nārowāl,32.1,74.883333,Pakistan,PK,Punjab,minor,,
+Khairpur,27.529483,68.761698,Pakistan,PK,Sindh,minor,,
+Malakand,34.565609,71.930432,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Vihāri,30.033333,72.35,Pakistan,PK,Punjab,minor,,
+Saidu Sharif,34.746548,72.355675,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Jhelum,32.934484,73.731018,Pakistan,PK,Punjab,minor,,
+Mandi Bahāuddīn,32.587037,73.491231,Pakistan,PK,Punjab,minor,,
+Bhakkar,31.625247,71.06574,Pakistan,PK,Punjab,minor,,
+Toba Tek Singh,30.974326,72.482694,Pakistan,PK,Punjab,minor,,
+Jāmshoro,25.436078,68.280172,Pakistan,PK,Sindh,minor,,
+Khārān,28.584585,65.415007,Pakistan,PK,Balochistān,minor,,
+Umarkot,25.36157,69.736241,Pakistan,PK,Sindh,minor,,
+Hangu,33.53198,71.059499,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Timargara,34.826595,71.844226,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Gākuch,36.176826,73.763834,Pakistan,PK,Gilgit-Baltistan,minor,,
+Jacobābād,28.281873,68.437613,Pakistan,PK,Sindh,minor,,
+Alpūrai,34.920577,72.632556,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Miānwāli,32.574095,71.526386,Pakistan,PK,Punjab,minor,,
+Mūsa Khel Bāzār,30.859443,69.82208,Pakistan,PK,Balochistān,minor,,
+Naushahro Fīroz,26.840104,68.122651,Pakistan,PK,Sindh,minor,,
+New Mīrpur,33.147815,73.751867,Pakistan,PK,Azad Kashmir,minor,,
+Daggar,34.511059,72.484375,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Eidgāh,35.347115,74.856317,Pakistan,PK,Gilgit-Baltistan,minor,,
+Sibi,29.542989,67.87726,Pakistan,PK,Balochistān,minor,,
+Dālbandīn,28.888456,64.406156,Pakistan,PK,Balochistān,minor,,
+Rājanpur,29.103513,70.325038,Pakistan,PK,Punjab,minor,,
+Leiah,30.961279,70.939043,Pakistan,PK,Punjab,minor,,
+Upper Dir,35.207398,71.876801,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Tando Muhammad Khān,25.123007,68.535773,Pakistan,PK,Sindh,minor,,
+Attock City,33.76671,72.359766,Pakistan,PK,Punjab,minor,,
+Rāwala Kot,33.857816,73.760426,Pakistan,PK,Azad Kashmir,minor,,
+Swābi,34.120181,72.46982,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Kandhkot,28.243963,69.182354,Pakistan,PK,Sindh,minor,,
+Dasu,35.291687,73.290602,Pakistan,PK,Khyber Pakhtunkhwa,minor,,
+Athmuqam,34.571733,73.897236,Pakistan,PK,Azad Kashmir,minor,,
