@@ -12,8 +12,8 @@ my_map  # Print the map
 # Simple World Map with set view
 ########################
 my_map <- leaflet() %>%
-  setView(lng = -71.0589, lat = 42.3601, zoom = 12) %>%
-  addTiles() 
+  addTiles()  %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 12)
 my_map
 
 ########################
@@ -24,18 +24,7 @@ my_map
 # OpenTopoMap
 my_map <- leaflet() %>%
   setView(lng = -71.0589, lat = 42.3601, zoom = 12) %>%
-  addProviderTiles(providers$Stamen.TonerLines)
-my_map
-
-########################
-# Combine Different Tiles
-########################
-my_map <- leaflet() %>%
-  setView(lng = -71.0589, lat = 42.3601, zoom = 12) %>%
-  addProviderTiles(providers$MtbMap) %>%
-  addProviderTiles(providers$Stamen.TonerLines,
-                   options = providerTileOptions(opacity = 0.35)) %>%
-  addProviderTiles(providers$Stamen.TonerLabels)
+  addProviderTiles(providers$MtbMap)
 my_map
 
 ########################
@@ -335,3 +324,14 @@ df %>%
   addLegend(labels = LETTERS[1:3], colors = c("blue", "red", "green"))
 
 
+
+########################
+# Combine Different Tiles
+########################
+my_map <- leaflet() %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 12) %>%
+  addProviderTiles(providers$MtbMap) %>%
+  addProviderTiles(providers$Stamen.TonerLines,
+                   options = providerTileOptions(opacity = 0.35)) %>%
+  addProviderTiles(providers$Stamen.TonerLabels)
+my_map
