@@ -29,3 +29,6 @@ We will make three datasets with names `df1`, `df2` and `df3`. `df1` is simple d
 
 ```df1 <- data.frame(lng=174.768, lat=-36.852)```
 
+Second dataset i.e. `df2` is the dataframe which contains three locations and three `lat` and `lng`. Moreover, these three locaitons are also annotated with the dummy `Description` and `size`. If you see the data then it will look like a table of four coloumns with headers `lat`, `lng`, `Description` and `Size`. In three rows, the values are given for three different locations. 
+
+
