@@ -83,7 +83,7 @@ Similarly, following cocde can be used to describe colors for continuous data su
 Contpallete <- colorQuantile("YlOrRd", df2$Size, n = 3)
 ```
 
-## Add the html based object for labels
+## Add html based object for labels
 
 The following object i.e. `content` will be used to describe the labels/markers text. 
 
@@ -491,4 +491,4 @@ Several other things can be done with `leaflet`. However, this tutorial is finis
 prepare_map  # Print the map
 ```
 
-> Note: Clerical mistakes are expected. Suggesstions are welcome to improve this readme along with the source codes. 
+> Note: Clerical mistakes are expected. Suggestions are welcome to improve this readme along with the source codes. 
