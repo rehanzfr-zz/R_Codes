@@ -1,3 +1,4 @@
+install.packages( "rvest")
 library(rvest)
 URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
 
