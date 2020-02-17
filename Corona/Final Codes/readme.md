@@ -86,3 +86,6 @@ Countriestable
 ```
 
 This object will be further used in next part of Video series.  
+
+> Note: This readme is generated in hurry and may contain mistakes. If you find any, please suggesst. 
+
