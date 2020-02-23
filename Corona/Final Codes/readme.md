@@ -8,11 +8,17 @@ Web Scraping for Affected Countries by COVID-19 in R with free Source Code <br/>
 [https://www.youtube.com/watch?v=ypNCPQDvsU0](https://www.youtube.com/watch?v=ypNCPQDvsU0)<br/>
 *Code Available in File* : `Webscraping1_Final.R`
 
+**Part 2**:<br/> 
+Plot Affected Countries by COVID-19 in R by using leaflet package <br/>
+[https://youtu.be/0iM4kcVGVIw](https://youtu.be/0iM4kcVGVIw)<br/>
+*Code Available in File* : `PLottingCountriesUsingLeaflet.R`
+
+---
 ---
 
 ## **Part 1** -- Web Scraping for Affected Countries by COVID-19 in R with free Source Code (Webscraping1_Final.R)
 
-This is the URL at which the list of affected countries is given. You can visit the page at [CDC](https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map).  
+This is the URL at which the list of affected countries is given. You can visit the page at [CDC](https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map). Youtube video is at [https://www.youtube.com/watch?v=ypNCPQDvsU0](https://www.youtube.com/watch?v=ypNCPQDvsU0)
 
 ```R
 URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
@@ -87,8 +93,11 @@ Countriestable
 
 This object will be further used in next part of Video series.  
 
-## **Part 2** -- Make a leaflet plot of Affected Countries by COVID-19 in R with free Source Code (PLottingCountriesUusingLeaflet.R)
-In this part, I have made a leaflet plot of affected countries produced as a dataframe in previous part. That dataframe is produced by web scraping the website of CDC.gov. You can see the complete video and description of Part 1 above.
+---
+---
+
+## **Part 2** -- Plot Affected Countries by COVID-19 in R by using leaflet package (PLottingCountriesUsingLeaflet.R)
+In this part, I have made a leaflet plot of affected countries produced as a dataframe in previous part. That dataframe is produced by web scraping the website of CDC.gov. You can see the complete video and description of Part 1 above. Youtube video is at [https://youtu.be/0iM4kcVGVIw](https://youtu.be/0iM4kcVGVIw)
 
 First of all, we will install the required packages. 
 
