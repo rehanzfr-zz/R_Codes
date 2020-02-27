@@ -77,7 +77,7 @@ You can definitely search `Set2` in following image.
 
 <img src="https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/ggplot2/figures/029-r-color-palettes-rcolorbrewer-palettes-1.png" width="200">
 
-Similarly, following cocde can be used to describe colors for continuous data such as `Size` in `df2`.
+Similarly, following code can be used to describe colors for continuous data such as `Size` in `df2`.
 
 ```R
 Contpallete <- colorQuantile("YlOrRd", df2$Size, n = 3)
