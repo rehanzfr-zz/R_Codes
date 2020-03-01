@@ -1,28 +1,12 @@
-library(rvest)
-URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
-
-# Web Scrap the URL. XPath will be copied from URL.
-PAGE <- read_html(URL) %>%
-  html_nodes(xpath="/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul") %>%
-  purrr::map(~html_nodes(.x, 'li') %>% 
-               html_text() %>% 
-               gsub(pattern = '\\t|\\r|\\n', replacement = ''))
-countries <- PAGE[[1]]
-countries
-# countries_updated <- ifelse(countries  == "United States", "USA", countries)    
-# Convert to Dataframe
-countries <- as.data.frame(matrix(unlist(countries),nrow=length(countries),byrow=TRUE))
-countries
-names(countries)[1] <- "Countries"
-Countriestable <- data.frame(Sr.No.=seq.int(nrow(countries)),countries)
-Countriestable
-###################################
 install.packages(stringr)
 install.packages(maps)
 install.packages(ggplot2)
 install.packages(sf)
 install.packages(dplyr)
 install.packages(raster)
+install.packages("GADMTools")
+install.packages("rgeos")
+install.packages("leaflet")
 
 library(stringr)
 library(maps)
@@ -55,14 +39,12 @@ Countriestable$Countries
 Countriestable$Countries <- recode(Countriestable$Countries, "United States" = "USA")
 Countriestable$Countries <- recode(Countriestable$Countries, "United Kingdom" = "UK")
 Countriestable$Countries <- recode(Countriestable$Countries, "The Republic of Korea" = "South Korea")
+Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" = "Macedonia")
 
 # After Changes
 Countriestable$Countries
 
 # Ok now it is time to let you know that Why we left Hong Kong and Macau. This is because first the Macau is not present in the mapping package but is given on CDC website. So we want to map it by some other package which can map it. Moreover, we want Hong Kong to be mapped using the same package as well. So in summary we want to map the countries using two different ways. One is the `maps` package and other is `GADMTools`.   
-
-install.packages("GADMTools")
-install.packages("rgeos")
 
 library(GADMTools)
 library(rgeos)
@@ -79,8 +61,6 @@ MACMap <- getData('GADM', country='macao', level=0)
 centerMAC <- data.frame(gCentroid(MACMap, byid = TRUE))
 
 # Now we have data and maps related to all countries mentioned at CDC.gov which are affected with Coronavirus. We will map these countries using leaflet package. You can see my video about leaflet at https://www.youtube.com/watch?v=oxMOMpL_bys.
-
-install.packages("leaflet")
 
 library(leaflet)
 
@@ -104,7 +84,7 @@ addPolygons(data = boundries, group = "Countries",
               fillOpacity = 0.1,
               highlightOptions = highlightOptions(color = "black",
                                                   weight = 2, 
-                                                  bringToFront = TRUE)) %>%
+                                                  bringToFront = FALSE)) %>%
 
 # Add polygon data for Hong Kong stored in object HKMap.  
 addPolygons(data=HKMap, group = "id",
@@ -115,12 +95,12 @@ addPolygons(data=HKMap, group = "id",
               fillOpacity = 0.1,
               highlightOptions = highlightOptions(color = "black", 
                                                   weight = 2,
-                                                  bringToFront = TRUE)) %>%
+                                                  bringToFront = FALSE)) %>%
   
 # Let's add the label only marker for the name of Hong Kong in center of that country
 addLabelOnlyMarkers(data = centerHK, lng = ~x, lat = ~y, 
                     label = "Hong Kong", 
-                    labelOptions = labelOptions(noHide = TRUE, 
+                    labelOptions = labelOptions(noHide = F, 
                                                 textsize = "15px", 
                                                 direction = 'top', 
                                                 textOnly = TRUE))    %>%
@@ -133,12 +113,12 @@ addPolygons(data=MACMap, group = "id",
               popup = "Macau",
               fillOpacity = 0.1,
               label = "Macau",
-              labelOptions = labelOptions(noHide = T, 
+              labelOptions = labelOptions(noHide = F, 
                                           textsize = "15px",
                                           direction = 'top'),
               highlightOptions = highlightOptions(color = "black", 
                                                   weight = 2,
-                                                  bringToFront = TRUE))
+                                                  bringToFront = FALSE))
 
 
 
