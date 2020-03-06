@@ -13,6 +13,11 @@ Plot Affected Countries by COVID-19 in R by using leaflet package <br/>
 [https://youtu.be/0iM4kcVGVIw](https://youtu.be/0iM4kcVGVIw)<br/>
 *Code Available in File* : `Part2_PLottingCountriesUsingLeaflet.R`
 
+**Part 3**:<br/> 
+How to Plot Values of Cases of COVID-19 on Interactive MAP in R by using leaflet package. <br/>
+[https://youtu.be/a4LXFcEuRUU](https://youtu.be/a4LXFcEuRUU)<br/>
+*Code Available in File* : `Part3_PlottingValuesonLeaflet.R`
+
 ---
 ---
 
@@ -301,6 +306,352 @@ Generate the leaflet map
 ```R
 Map_AffectedCountries
 ```
+
+---
+---
+
+## **Part 3** -- How to Plot Values of Cases of COVID-19 on Interactive MAP in R by using leaflet package (Part3_PlottingValuesonLeaflet.R)
+
+Youtube video is at [https://youtu.be/a4LXFcEuRUU](https://youtu.be/a4LXFcEuRUU)
+
+Install Libraries
+```R
+install.packages("readr")
+install.packages("knitr") 
+install.packages("RCurl")
+install.packages("htmlwidgets")
+install.packages("htmltools")
+```
+
+Call Libraries
+
+```R
+library(readr)
+library(knitr) 
+library(RCurl)
+library(htmlwidgets)
+library(htmltools)
+```
+
+For the time series data (means the status of confirmed cases, deaths and recovered cases day wise) we will go the link of github i.e. [https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series). This data has been provided by Johns Hopkins CSSEJHU CSSE [https://systems.jhu.edu/research/public-health/ncov/](https://systems.jhu.edu/research/public-health/ncov/). For more information, please visit [https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19). 
+
+Now on the page [https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series), you can see three categories i.e. [time_series_19-covid-Confirmed.csv](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv), [time_series_19-covid-Deaths.csv](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv), [time_series_19-covid-Recovered.csv](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv). These CSV files (CSV is the extension of files) can be opened on github but are not suitable for fetching data in python or R. So click each link to the files and go the `raw` button. This will open a new page. Copy the links to each raw data of these files and paste somewhere with you. The links to the raw data looks like:
+
+```R
+# Confirmed Cases
+ https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv
+
+# Deaths
+ https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv
+
+# Recovered Cases
+ https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv
+```
+
+If you observer then there is a common path in all these links which is ` https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/`. So first of all grab it  as `Main`:
+
+```R
+Main <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"
+```
+
+Here, `file.path` is used to join the `Main` with names of the CSV files in each case. It is just like adding ` https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/` with `time_series_19-covid-Confirmed.csv` to make `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv`
+
+```R
+confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
+confirmed
+Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
+Deaths
+Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+Recoverd
+```
+
+In the following code, we will read the data present in CSVs by using their links made above:
+
+```R
+ConfirmedData <- read.csv(confirmed)
+DeathData <- read.csv(Deaths)
+RecoveredData <-  read.csv(Recoverd)
+```
+
+`DateColumn` represents which column or date we are interested in for plotting. At the time of video, the latest date in all the CSVs was `X29.2.20`. You can check the last column heading of all CSVs to get the current and latest date for which the values have been reported. After it, the `cleanDateColumn` is saving `2.29.20` by removing `X` in the initial. `gsub` is used to do that kind of stuff. This cleanDateColumn will be further used in labeling but fetching of the data will be done using `DateColumn` object.
+
+```R
+DateColumn<- "X2.29.20"
+cleanDateColumn <- gsub('X','',DateColumn)
+```
+
+In the following code, different popups for Confirmed, Deaths and Recovered Cases are designed to be shown on the map. These popups will popup when we click the circles used for showing the number of cases in each category. For example, `popupConfirmed` is an html syntax used in R to make a popup. This html looks like `<strong>County: </strong> US <br><strong>Province/State: </strong> Snohomish County, WA <br><strong>Confirmed: </strong> 1`. If you copy this code in html editor than you can find its format. I have shown it in video. Similarly, `popupdeath` is used to define the popup when deaths are shown in circles and `popupRecovered` show the recovered cases.  
+
+```R
+popupConfirmed <- paste("
+                        <strong>County: </strong>", 
+                        ConfirmedData$Country.Region, 
+                        "<br><strong>Province/State: </strong>", 
+                        ConfirmedData$Province.State, 
+                        "<br><strong>Confirmed: </strong>", 
+                        ConfirmedData[,DateColumn]
+                        )
+
+popupdeath <- paste("
+                    <strong>County: </strong>", 
+                    DeathData$Country.Region, 
+                    "<br><strong>Province/State: </strong>", 
+                    DeathData$Province.State, 
+                    "<br><strong>Deaths: </strong>", 
+                    DeathData[,DateColumn] 
+                    )
+
+popupRecovered <- paste("
+                        <strong>County: </strong>", 
+                        RecoveredData$Country.Region, 
+                        "<br><strong>Province/State: </strong>", 
+                        RecoveredData$Province.State, 
+                        "<br><strong>Recovered: </strong>", 
+                        RecoveredData[,DateColumn]
+                        )
+
+```
+The code above will look like this. **Do not copy as this is not the part of actual coding.**
+
+```html
+<strong>County: </strong> US <br><strong>Province/State: </strong> Snohomish County, WA <br><strong>Confirmed: </strong> 1
+
+<strong>County: </strong> US <br><strong>Province/State: </strong> Snohomish County, WA <br><strong>Deaths: </strong> 0
+
+<strong>County: </strong> US <br><strong>Province/State: </strong> Snohomish County, WA <br><strong>Recovered: </strong> 0
+```
+
+In the following code, different Color Pallets for Confirmed, Deaths and Recovered Cases are devised. Here `colorBin` is used to devise the range of values in each category with different levels of colors. I mean light color for less and strong color for more cases. Moreover, three different categories are represented with three different colors. aahh, you are welcome my sweet beginners. 
+
+```R
+palConfirmed <- colorBin(palette = "GnBu", domain = ConfirmedData[,DateColumn] , bins = 3 , reverse = FALSE)
+
+paldeath     <- colorBin(palette = "OrRd", domain = DeathData[,DateColumn]     , bins = 3 , reverse = FALSE)
+
+palrecovered <- colorBin(palette = "BuGn", domain = RecoveredData[,DateColumn] , bins = 3 ,  reverse = FALSE)
+```
+
+Now, we want to add text on the map which represent Title, Subtitle and number of cases. For this we will use CSS styles  for each. 
+What is CSS? You are right. I will make a video on it separately or search YouTube for now.
+
+```R
+title <- tags$style(HTML("
+                         .map-title {
+                         font-family: 'Cool Linked Font', fantasy; 
+                         transform: translate(-10%,20%); 
+                         position: fixed !important; 
+                         left: 10%; 
+                         text-align: left; 
+                         padding-left: 10px; 
+                         padding-right: 10px; 
+                         background: rgba(255,255,255,0.75); 
+                         font-weight: bold; 
+                         font-size: 25px}")
+                        )
+
+
+subtitle <- tags$style(HTML("
+                            .map-subtitle {
+                            transform: translate(-10%,150%);
+                            position: fixed !important;
+                            left: 10%;
+                            text-align: left;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            font-size: 18px}")
+                            )
+
+CasesLabel<- tags$style(HTML("
+                             .cases-label{
+                             position: absolute; 
+                             bottom: 8px; 
+                             left: 16px; 
+                             font-size: 18px}")
+                            )
+```
+
+Here we will write what we want to show as Title, Subtitle and Cases in HTML format over Map. As you remember from above, `DateColumn` has a value of `X29.2.20` that is the column header of the last/latest column at the time of coding this code. Now, if I want to extract the values of that column from data object of confirmed cases that is `ConfirmedData` then I have to issue  `ConfirmedData[,DateColumn]` which means get the values of column with header `X29.2.20` from data file `ConfirmedData`. Please remember the place of comma. Before it are rows and after it are columns. 
+
+```R
+leaflettitle <- tags$div(title, HTML("Status of COVID-19"))  
+
+leafletsubtitle <- tags$div(subtitle, HTML("YouTube: Dr Rehan Zafar"))  
+
+CasesLabelonMap <- tags$div(CasesLabel, HTML(paste(
+  "<strong>Date: </strong>", 
+  cleanDateColumn, 
+  "<strong>Confirmed: </strong>",
+  sum(as.numeric(ConfirmedData[,DateColumn])), 
+  "<strong>Deaths: </strong>",
+  sum(as.numeric(DeathData[,DateColumn])),
+  "<strong>Recovered: </strong>",
+  sum(as.numeric(RecoveredData[,DateColumn]))))
+                          )
+```
+
+The code above will look like this and if you copy this and paste in HTML editor, you can see the format. **Do not copy as this is not the part of actual coding.**
+
+```html
+<div>
+  <style>.map-title {font-family: 'Cool Linked Font', fantasy; transform: translate(-10%,20%); position: fixed !important; left: 10%; text-align: left; padding-left: 10px; padding-right: 10px; background: rgba(255,255,255,0.75); font-weight: bold; font-size: 25px}</style>
+  Status of COVID-19
+</div>
+
+
+<div>
+  <style>.map-subtitle {transform: translate(-10%,150%);position: fixed !important;left: 10%;text-align: left;padding-left: 10px;padding-right: 10px;font-size: 18px}</style>
+  YouTube: Dr Rehan Zafar
+</div>
+
+
+<div>
+  <style>.cases-label{position: absolute; bottom: 8px; left: 16px; font-size: 18px}</style>
+  <strong>Date: </strong> 2.29.20 <strong>Confirmed: </strong> 86013 <strong>Deaths: </strong> 2941 <strong>Recovered: </strong> 39782
+</div>
+```
+
+Now, we will add the information back into the leaflet map. For this we will use the object of `Map_AffectedCountries` which was used to make the map in previous part. 
+
+```R
+Mapwithvalues <- Map_AffectedCountries %>% 
+```
+
+In the following code we will plot Confirmed cases and add the legend for it along with the control to show or hide this data. 
+
+```R
+addCircleMarkers(data= ConfirmedData, 
+                 lng = ~Long, 
+                 lat = ~Lat, 
+                 radius = ~log(ConfirmedData[,DateColumn])*5, 
+                 stroke = FALSE, 
+                 fillOpacity = 1, 
+                 popup = popupConfirmed, 
+                 color = ~palConfirmed(ConfirmedData[,DateColumn]), 
+                 group = "Circles(Confirmed)") %>%
+
+  
+addLabelOnlyMarkers(data= ConfirmedData, 
+                      lng = ~Long, 
+                      lat = ~Lat, 
+                      label  = ~as.character(ConfirmedData[,DateColumn]), 
+                      group="Values(Confirmed)", 
+                      labelOptions = labelOptions(noHide = T, 
+                                                  direction = 'center', 
+                                                  textOnly = T, 
+                                                  style=list('color'='blue', 
+                                                             'font-family'= 'sans',
+                                                             'font-style'= 'bold', 
+                                                             'font-size' = '20px', 
+                                                             'border-color' = 'rgba(0,0,0,0.5)'))) %>%
+  
+addLegend("bottomright", 
+          pal = palConfirmed, 
+          values = ConfirmedData[,DateColumn], 
+          title = "Confirmed", 
+          opacity = 1) %>%
+```
+
+In the following code we will plot Recovered cases and add the legend for it along with the control to show or hide this data.
+
+```R
+addCircleMarkers(data= RecoveredData, 
+                 lng = ~Long, 
+                 lat = ~Lat, 
+                 radius = ~log(X2.27.20)*5, 
+                 stroke = FALSE, 
+                 fillOpacity = 1, 
+                 popup = popupRecovered, 
+                 color = ~palrecovered(RecoveredData$X2.27.20), 
+                 group = "Circles(Recovered)") %>%
+
+  
+addLabelOnlyMarkers(data= RecoveredData, 
+                    lng = ~Long, 
+                    lat = ~Lat, 
+                    label  = ~as.character(RecoveredData[,DateColumn]), 
+                    group="Values(Recovered)", 
+                    labelOptions = labelOptions(noHide = T, 
+                                                direction = 'center', 
+                                                textOnly = T, 
+                                                style=list('color'='green', 
+                                                           'font-family'= 'sans', 
+                                                           'font-style'= 'bold', 
+                                                           'font-size' = '20px',
+                                                           'border-color' = 'rgba(0,0,0,0.5)'))) %>%
+  
+addLegend("bottomright", 
+          pal = palrecovered, 
+          values = RecoveredData[,DateColumn], 
+          title = "Recovered", 
+          opacity = 1) %>%
+```
+
+In the following code we will plot Deaths and add the legend for it along with the control to show or hide this data.
+
+```R
+addCircleMarkers(data= DeathData, 
+                 lng = ~Long, 
+                 lat = ~Lat, 
+                 radius = ~log(DeathData[,DateColumn])*5, 
+                 stroke = FALSE, 
+                 fillOpacity = 1, 
+                 popup = popupdeath, 
+                 color = ~paldeath(DeathData[,DateColumn]), 
+                 group = "Circles(Death)") %>%
+  
+addLabelOnlyMarkers(data= DeathData, 
+                      lng = ~Long, 
+                      lat = ~Lat, 
+                      label  = ~as.character(DeathData[,DateColumn]), 
+                      group="Values(Death)", 
+                      labelOptions = labelOptions(noHide = T, 
+                                                  direction = 'center', 
+                                                  textOnly = T, 
+                                                  style=list('color'='red', 
+                                                             'font-family'= 'sans', 
+                                                             'font-style'= 'bold',
+                                                             'font-size' = '20px',
+                                                             'border-color' = 'rgba(0,0,0,0.5)'))) %>%
+  
+  
+addLegend("bottomright", 
+          pal=paldeath, 
+          values=DeathData[,DateColumn], 
+          title = "Deaths", 
+          opacity = 1) %>%
+```
+
+In the following code, we are actually showing the check boxes for showing or hiding the circles and values for cases. 
+
+```R
+addLayersControl(overlayGroups = c("Circles(Confirmed)","Values(Confirmed)" ,"Circles(Recovered)","Values(Recovered)", "Circles(Death)","Values(Death)"), options = layersControlOptions(collapsed = FALSE)) %>%
+```
+
+In the following code, we will add title, subtitle, and number of cases over the map.
+
+```R
+addControl(leaflettitle, position = "topleft", className="map-title") %>%
+    
+addControl(leafletsubtitle, position = "topleft", className="map-subtitle") %>%
+  
+addControl(CasesLabelonMap, position = "bottomleft", className="cases-label")
+```
+
+Show the map
+
+```R
+Mapwithvalues
+```
+
+Save this map as html file for presenting it later. 
+
+```R
+saveWidget(Mapwithvalues, file="map1.html", selfcontained=FALSE)
+```
+
+You can search the path where it is stored by `getwd()` or `setwd()` before saving. 
+
+
 ---
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
