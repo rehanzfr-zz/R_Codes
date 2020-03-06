@@ -31,10 +31,14 @@ In this line we will read the url using 'read_html' function.
 PAGE <- read_html(URL) %>%
 ```
 
-After reading the html we will extract the html object by using the xpath from the original url. You can see video how I copied this xpath (`/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul`).  
+After reading the html we will extract the html object by using the xpath from the original url. You can see video how I copied this xpath (`/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul`).
+
+> UPDATE ON THIS LINE OF CODE (*Dated: 07-March-2020*):
+ 
+The video contains the xpath to previous version of CDC website. Previously that `xpath` was `/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul` which can be seen in the video and in above lines but after the CDC has updated the website along with the list of affected countries, We now have to change the xpath in our code too. The new xpath is now `/html/body/div[6]/main/div[3]/div/div[3]/div[2]` that is updated below as well:  
 
 ```R
-html_nodes(xpath="/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul") %>%
+html_nodes(xpath="/html/body/div[6]/main/div[3]/div/div[3]/div[2]") %>%
 ```
 
 Now, the map function of purrr package will be used to get the `li` node of html which actually contains all the names of the countries. 
