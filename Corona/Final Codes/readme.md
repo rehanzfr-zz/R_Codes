@@ -11,7 +11,7 @@ Web Scraping for Affected Countries by COVID-19 in R with free Source Code <br/>
 **Part 2**:<br/> 
 Plot Affected Countries by COVID-19 in R by using leaflet package <br/>
 [https://youtu.be/0iM4kcVGVIw](https://youtu.be/0iM4kcVGVIw)<br/>
-*Code Available in File* : `PLottingCountriesUsingLeaflet.R`
+*Code Available in File* : `Part2_PLottingCountriesUsingLeaflet.R`
 
 ---
 ---
@@ -100,7 +100,7 @@ This object will be further used in next part of Video series.
 ---
 ---
 
-## **Part 2** -- Plot Affected Countries by COVID-19 in R by using leaflet package (PLottingCountriesUsingLeaflet.R)
+## **Part 2** -- Plot Affected Countries by COVID-19 in R by using leaflet package (Part2_PLottingCountriesUsingLeaflet.R)
 In this part, I have made a leaflet plot of affected countries produced as a dataframe in previous part. That dataframe is produced by web scraping the website of CDC.gov. You can see the complete video and description of Part 1 above. Youtube video is at [https://youtu.be/0iM4kcVGVIw](https://youtu.be/0iM4kcVGVIw)
 
 First of all, we will install the required packages. 
