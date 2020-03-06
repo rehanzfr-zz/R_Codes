@@ -6,7 +6,7 @@ Different files here represent the codes used in a video series. This video seri
 **Part 1**:<br/> 
 Web Scraping for Affected Countries by COVID-19 in R with free Source Code <br/>
 [https://www.youtube.com/watch?v=ypNCPQDvsU0](https://www.youtube.com/watch?v=ypNCPQDvsU0)<br/>
-*Code Available in File* : `Webscraping1_Final.R`
+*Code Available in File* : `Part1_CDCWebscraping.R`
 
 **Part 2**:<br/> 
 Plot Affected Countries by COVID-19 in R by using leaflet package <br/>
@@ -16,7 +16,7 @@ Plot Affected Countries by COVID-19 in R by using leaflet package <br/>
 ---
 ---
 
-## **Part 1** -- Web Scraping for Affected Countries by COVID-19 in R with free Source Code (Webscraping1_Final.R)
+## **Part 1** -- Web Scraping for Affected Countries by COVID-19 in R with free Source Code (Part1_CDCWebscraping.R)
 
 This is the URL at which the list of affected countries is given. You can visit the page at [CDC](https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map). Youtube video is at [https://www.youtube.com/watch?v=ypNCPQDvsU0](https://www.youtube.com/watch?v=ypNCPQDvsU0)
 
