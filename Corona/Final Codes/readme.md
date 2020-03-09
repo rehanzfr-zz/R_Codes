@@ -1,4 +1,4 @@
-**The information is constantly updating about COVID-19. So the code given in videos is also constantly updated here. Please stay tuned on this page as well after watching the videos.**
+**The information is constantly updating about COVID-19. So the code given in videos is also constantly updated here. Please stay tuned on this page as well after watching the videos. Once, the information will gain stability, the code and related explanation here will also be overhauled accordingly.**
 
 
 
