@@ -1,3 +1,6 @@
+* **The information provided by different resources is under heavy updates. So the code given in videos is constantly updated here. Please stay tuned on this page as well after watching the videos.** * 
+
+
 
 Different files here represent the codes used in a video series. This video series will cover different geographical, epidemiological, genomic and proteomic analysis. I am doing this series to make myself helpful for our friends in China and any other countries affected by the novel coronavirus (COVID-19).
 
