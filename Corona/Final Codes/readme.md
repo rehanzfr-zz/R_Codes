@@ -164,7 +164,16 @@ Now we will calculate the differences between the names of countries present in 
 setdiff(as.character(Countriestable$Countries), CountriesAvailable$region)
 ```
 
+
 So the countries given on website of `CDC.gov` is United States but we would require this as USA so that map can be plotted.This is because the name of country in package is USA. There are other countries as well including Macau, The Republic of Korea and United Kingdom which will be required to change as well. Here we are changing the values in Countries column of Countriestable (`Countriestable$Countries`) for USA, UK and South Korea only. Macau and Hong Kong will not be changed due to a reason discussed further.
+> UPDATE (*Dated: 10-March-2020*):
+> Setdiff is showing these countries:
+```R
+[1] "Guadalupe"               "United States"           "Czechia"                 "Gibraltar"              
+ [5] "Holy See (Vatican City)" "North Macedonia"         "United Kingdom"          "Hong Kong"              
+ [9] "Macau"                   "Republic of Korea"
+```
+So we have to change some names including that of United states to USA, United Kingdom to UK, The Republic of Korea to South Korea, North Macedonia to Macedonia, Bosnia to Bosnia and Herzegovina, Czechia to Czech Republic and Holy See (Vatican City) to Vetican. This is becuase the names in map data are these.
 
 Before
 
@@ -174,11 +183,19 @@ Countriestable$Countries
 
 Changes
 
+
+
 ```R
 Countriestable$Countries <- recode(Countriestable$Countries, "United States" = "USA")
 Countriestable$Countries <- recode(Countriestable$Countries, "United Kingdom" = "UK")
 Countriestable$Countries <- recode(Countriestable$Countries, "The Republic of Korea" = "South Korea")
+# UPDATE ON THESE LINES OF CODE (*Dated: 10-March-2020*):
+Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" = "Macedonia")
+Countriestable$Countries <- recode(Countriestable$Countries, "Bosnia" = "Bosnia and Herzegovina")
+Countriestable$Countries <- recode(Countriestable$Countries, "Holy See (Vatican City)" = "Vatican")
+Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech Republic")
 ```
+
 
 After Changes
 
@@ -214,6 +231,20 @@ Find a center point for Macao/u map
 
 ```R
 centerMAC <- data.frame(gCentroid(MACMap, byid = TRUE))
+```
+
+> UPDATE ON THESE LINES OF CODE (*Dated: 10-March-2020*):
+
+Similarly, gibraltar is the country which is not present in the map data. So we will also get the map of this region from GADM. 
+
+```R
+########## Updated for Gibraltar
+GBMap <- getData('GADM', country='Gibraltar', level=0)
+class(GBMap)
+centerGB <- data.frame(gCentroid(GBMap, byid = TRUE))
+centerGB
+
+
 ```
 
 Now, we have data and maps related to all countries mentioned at CDC.gov which are affected with Coronavirus. We will map these countries using leaflet package. You can see my video about leaflet at [https://www.youtube.com/watch?v=oxMOMpL_bys](https://www.youtube.com/watch?v=oxMOMpL_bys).
@@ -304,6 +335,39 @@ addPolygons(data=MACMap, group = "id",
 Generate the leaflet map
 
 ```R
+Map_AffectedCountries
+```
+
+> UPDATE ON THESE LINES OF CODE (*Dated: 10-March-2020*):
+
+Now, we will add the recently affected region of Guadalupe and Gibraltar
+
+```R
+########## Updated for Guadalupe 
+boundryGuadalupe <- maps::map("world", "Mexico:Guadalupe Island", fill = TRUE, plot = FALSE)
+Map_AffectedCountries <- Map_AffectedCountries %>%
+  addProviderTiles("OpenStreetMap.Mapnik") %>%
+  addPolygons(data = boundryGuadalupe, group = "Countries", 
+              color = "red", 
+              weight = 2,
+              smoothFactor = 0.2,
+              #popup = ~names,
+              fillOpacity = 0.1,
+              highlightOptions = highlightOptions(color = "black",
+                                                  weight = 2,bringToFront = FALSE)) %>%
+
+########## Updated for Gibraltar
+  
+  addPolygons(data=GBMap,group='id',
+              color = "red", 
+              weight = 2,
+              smoothFactor = 0.2,
+              popup = "Gibraltar",
+              fillOpacity = 0.1,
+              label = "Gibraltar",
+              labelOptions = labelOptions(noHide = F, textsize = "15px",                                         direction = 'top'),
+              highlightOptions = highlightOptions(color = "black", weight = 2,
+                                                  bringToFront = F))
 Map_AffectedCountries
 ```
 

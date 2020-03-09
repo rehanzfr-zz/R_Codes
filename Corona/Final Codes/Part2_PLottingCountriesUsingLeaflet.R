@@ -39,7 +39,11 @@ Countriestable$Countries
 Countriestable$Countries <- recode(Countriestable$Countries, "United States" = "USA")
 Countriestable$Countries <- recode(Countriestable$Countries, "United Kingdom" = "UK")
 Countriestable$Countries <- recode(Countriestable$Countries, "The Republic of Korea" = "South Korea")
+#Update
 Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" = "Macedonia")
+Countriestable$Countries <- recode(Countriestable$Countries, "Bosnia" = "Bosnia and Herzegovina")
+Countriestable$Countries <- recode(Countriestable$Countries, "Holy See (Vatican City)" = "Vatican")
+Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech Republic")
 
 # After Changes
 Countriestable$Countries
@@ -59,6 +63,12 @@ centerHK <- data.frame(gCentroid(HKMap, byid = TRUE))
 MACMap <- getData('GADM', country='macao', level=0)
 # Find a center point for Macao/u map
 centerMAC <- data.frame(gCentroid(MACMap, byid = TRUE))
+
+########## Updated for Gibraltar
+GBMap <- getData('GADM', country='Gibraltar', level=0)
+class(GBMap)
+centerGB <- data.frame(gCentroid(GBMap, byid = TRUE))
+centerGB
 
 # Now we have data and maps related to all countries mentioned at CDC.gov which are affected with Coronavirus. We will map these countries using leaflet package. You can see my video about leaflet at https://www.youtube.com/watch?v=oxMOMpL_bys.
 
@@ -125,3 +135,29 @@ addPolygons(data=MACMap, group = "id",
 # Generate the leaflet map
 Map_AffectedCountries
 
+########## Updated for Guadalupe 
+boundryGuadalupe <- maps::map("world", "Mexico:Guadalupe Island", fill = TRUE, plot = FALSE)
+
+Map_AffectedCountries <- Map_AffectedCountries %>%
+  addProviderTiles("OpenStreetMap.Mapnik") %>%
+  addPolygons(data = boundryGuadalupe, group = "Countries", 
+              color = "red", 
+              weight = 2,
+              smoothFactor = 0.2,
+              #popup = ~names,
+              fillOpacity = 0.1,
+              highlightOptions = highlightOptions(color = "black",
+                                                  weight = 2,bringToFront = FALSE)) %>%
+  ########## Updated for Gibraltar
+  
+  addPolygons(data=GBMap,group='id',
+              color = "red", 
+              weight = 2,
+              smoothFactor = 0.2,
+              popup = "Gibraltar",
+              fillOpacity = 0.1,
+              label = "Gibraltar",
+              labelOptions = labelOptions(noHide = F, textsize = "15px",                                         direction = 'top'),
+              highlightOptions = highlightOptions(color = "black", weight = 2,
+                                                  bringToFront = F))
+Map_AffectedCountries
