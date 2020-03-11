@@ -176,7 +176,7 @@ So the countries given on website of `CDC.gov` is United States but we would req
  [5] "Holy See (Vatican City)" "North Macedonia"         "United Kingdom"          "Hong Kong"              
  [9] "Macau"                   "Republic of Korea"
 ```
-So we have to change some names including that of United states to USA, United Kingdom to UK, The Republic of Korea to South Korea, North Macedonia to Macedonia, Bosnia to Bosnia and Herzegovina, Czechia to Czech Republic and Holy See (Vatican City) to Vetican. This is becuase the names in map data are these.
+So we have to change some names including that of United states to USA, United Kingdom to UK, The Republic of Korea to South Korea, North Macedonia to Macedonia, Bosnia to Bosnia and Herzegovina, Czechia to Czech Republic, Holy See (Vatican City) to Vetican and Brunei Darussalam to Brunei. This is becuase the names in map data requrie this adjustment.
 
 Before
 
@@ -197,6 +197,8 @@ Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" =
 Countriestable$Countries <- recode(Countriestable$Countries, "Bosnia" = "Bosnia and Herzegovina")
 Countriestable$Countries <- recode(Countriestable$Countries, "Holy See (Vatican City)" = "Vatican")
 Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech Republic")
+# UPDATED THESE LINES OF CODE ON *Dated: 12-March-2020*:
+Countriestable$Countries <- recode(Countriestable$Countries, "Brunei Darussalam" = "Brunei")
 ```
 
 
