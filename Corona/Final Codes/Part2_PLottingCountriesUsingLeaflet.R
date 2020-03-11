@@ -44,6 +44,8 @@ Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" =
 Countriestable$Countries <- recode(Countriestable$Countries, "Bosnia" = "Bosnia and Herzegovina")
 Countriestable$Countries <- recode(Countriestable$Countries, "Holy See (Vatican City)" = "Vatican")
 Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech Republic")
+# Update Dated 12-03-2020
+Countriestable$Countries <- recode(Countriestable$Countries, "Brunei Darussalam" = "Brunei")
 
 # After Changes
 Countriestable$Countries
