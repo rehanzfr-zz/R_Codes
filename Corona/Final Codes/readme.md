@@ -1,3 +1,8 @@
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/rehanzfr/R_Codes/issues)
+[![Fundings welcome](https://img.shields.io/badge/Fundings-welcome-yellow.svg?style=flat)](https://github.com/rehanzfr)
+[![Updates](https://img.shields.io/badge/Updated-19--03--2020-green.svg?style=flat)](https://github.com/rehanzfr/R_Codes/tree/master/Corona/Final%20Codes)
+[![Language](https://img.shields.io/badge/Language-R-blue.svg?style=flat)](https://www.r-project.org/)
+
 **The information is constantly updating about COVID-19. So the code given in videos is also constantly updated here. Please stay tuned on this page as well after watching the videos. Once, the information will gain stability, the code and related explanation here will also be overhauled accordingly.**
 
 
