@@ -26,10 +26,18 @@ How to Plot Values of Cases of COVID-19 on Interactive MAP in R by using leaflet
 
 ## **Part 1** -- Web Scraping for Affected Countries by COVID-19 in R with free Source Code (Part1_CDCWebscraping.R)
 
-This is the URL at which the list of affected countries is given. You can visit the page at [CDC](https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map). Youtube video is at [https://www.youtube.com/watch?v=ypNCPQDvsU0](https://www.youtube.com/watch?v=ypNCPQDvsU0)
+This is the URL at which the list of affected countries is given. You can visit the page at [CDC](https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map). Youtube video is at [https://www.youtube.com/watch?v=ypNCPQDvsU0](https://www.youtube.com/watch?v=ypNCPQDvsU0).
+
+> Updated on 19-03-2020: The url is changed from `https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map` to
+`https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html` to accomodate changes according to the changes in CDC website.
+
+
 
 ```R
-URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
+# Previously as in video:
+# URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
+# Updated on 19-03-2020
+URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"
 ```
 
 **Actual Web Scraping**
@@ -178,6 +186,9 @@ So the countries given on website of `CDC.gov` is United States but we would req
 ```
 So we have to change some names including that of United states to USA, United Kingdom to UK, The Republic of Korea to South Korea, North Macedonia to Macedonia, Bosnia to Bosnia and Herzegovina, Czechia to Czech Republic, Holy See (Vatican City) to Vetican and Brunei Darussalam to Brunei. This is becuase the names in map data requrie this adjustment.
 
+> Updated on *19-March-2020*: The names of several countries or regions were defined combined. So they were first deleted from the dataframe and then these were appended seprately. Moreover, one country was defined two times on CDC by their different names such as `Congo` and `Democratic Republic of Congo`. So the later one is deleted where former is changed to `Democratic Republic of the Congo`. Now where you will see the Updated on 19-03-2020 so these are updated at this date after the video. 
+
+
 Before
 
 ```R
@@ -189,16 +200,46 @@ Changes
 
 
 ```R
+# Changes reqruied in the names of the countries
 Countriestable$Countries <- recode(Countriestable$Countries, "United States" = "USA")
 Countriestable$Countries <- recode(Countriestable$Countries, "United Kingdom" = "UK")
-Countriestable$Countries <- recode(Countriestable$Countries, "The Republic of Korea" = "South Korea")
-# UPDATE ON THESE LINES OF CODE (*Dated: 10-March-2020*):
+# Updated on 19-03-20: Change of Republic of Korea to South Korea
+Countriestable$Countries <- recode(Countriestable$Countries, "Republic of Korea" = "South Korea")
+#Update
 Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" = "Macedonia")
 Countriestable$Countries <- recode(Countriestable$Countries, "Bosnia" = "Bosnia and Herzegovina")
 Countriestable$Countries <- recode(Countriestable$Countries, "Holy See (Vatican City)" = "Vatican")
 Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech Republic")
-# UPDATED THESE LINES OF CODE ON *Dated: 12-March-2020*:
+# Update Dated 12-03-2020
 Countriestable$Countries <- recode(Countriestable$Countries, "Brunei Darussalam" = "Brunei")
+#Updated on 19-03-2020
+Countriestable$Countries <- recode(Countriestable$Countries, "Eswatini" = "Swaziland")
+Countriestable$Countries <- recode(Countriestable$Countries, "Ivory Coast (Côte d’Ivoire)" = "Ivory Coast")
+Countriestable$Countries <- recode(Countriestable$Countries, "Congo" = "Democratic Republic of the Congo")
+
+# Deleted the combinations of countries and the duplicated values. Combinations will be added later on appended separately. 
+#Updated on 19-03-2020
+Countriestable<-Countriestable[!(Countriestable$Countries=="Antigua and Barbuda"),]
+Countriestable<-Countriestable[!(Countriestable$Countries=="Democratic Republic of Congo"),]
+Countriestable<-Countriestable[!(Countriestable$Countries=="Saint Vincent and the Grenadines"),]
+Countriestable <- Countriestable[!(Countriestable$Countries=="Trinidad and Tobago"),]
+#Updated on 19-03-2020
+Country_Antigua <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Antigua")
+Countriestable <-  rbind(Countriestable, Country_Antigua)
+Country_Barbuda <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Barbuda")
+Countriestable <-  rbind(Countriestable, Country_Barbuda)
+# Added two new names and deleted their combination
+#Updated on 19-03-2020
+Country_SaintVincent <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Saint Vincent")
+Countriestable <-  rbind(Countriestable, Country_SaintVincent)
+Country_Grenadines <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Grenadines")
+Countriestable <-  rbind(Countriestable, Country_Grenadines)
+# Added two new names and deleted their combination above
+#Updated on 19-03-2020
+Country_Trinidad <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Trinidad")
+Countriestable <-  rbind(Countriestable, Country_Trinidad)
+Country_Tobago <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Tobago")
+Countriestable <-  rbind(Countriestable, Country_Tobago)
 ```
 
 
@@ -442,10 +483,15 @@ DeathData <- read.csv(Deaths)
 RecoveredData <-  read.csv(Recoverd)
 ```
 
-`DateColumn` represents which column or date we are interested in for plotting. At the time of video, the latest date in all the CSVs was `X29.2.20`. You can check the last column heading of all CSVs to get the current and latest date for which the values have been reported. After it, the `cleanDateColumn` is saving `2.29.20` by removing `X` in the initial. `gsub` is used to do that kind of stuff. This cleanDateColumn will be further used in labeling but fetching of the data will be done using `DateColumn` object.
+`DateColumn` represents which column or date we are interested in for plotting. At the time of video, the latest date in all the CSVs was `X29.2.20` (*This has been updated: See below*).  You can check the last column heading of all CSVs to get the current and latest date for which the values have been reported. After it, the `cleanDateColumn` is saving `2.29.20` by removing `X` in the initial. `gsub` is used to do that kind of stuff. This cleanDateColumn will be further used in labeling but fetching of the data will be done using `DateColumn` object.
 
+> UPDATED on *19-03-2020* for getting the last column header of the `ConfirmedData` automatically to stay updated. Rest of the code will remain same. 
+> 
 ```R
-DateColumn<- "X2.29.20"
+# Previous One
+# DateColumn<- "X2.29.20"
+# UPDATED on 19-03-2020 for getting the last column header of the ConfirmedData automatically to stay updated. Rest of the code will remain same. 
+DateColumn <- colnames(ConfirmedData)[ncol(ConfirmedData)]
 cleanDateColumn <- gsub('X','',DateColumn)
 ```
 

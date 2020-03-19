@@ -32,7 +32,10 @@ RecoveredData <-  read.csv(Recoverd)
 
 #------------------------------------------
 # DateColumn represents which column or date we are interested in for plotting. 
-DateColumn<- "X2.29.20"
+# Previous One
+#DateColumn<- "X2.29.20"
+# UPDATED on 19-03-2020 for getting the last column header of the ConfirmedData automatically to stay updated. Rest of the code will remain same. 
+DateColumn <- colnames(ConfirmedData)[ncol(ConfirmedData)]
 cleanDateColumn <- gsub('X','',DateColumn)
 #------------------------------------------
 # Different popups for Confirmed, Deaths and Recovered Cases. These popups will popup when we click the circles.

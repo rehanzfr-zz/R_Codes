@@ -3,8 +3,10 @@ library(rvest)
 
 # This is the URL at which the list of affected countries is given. Copy the url within quotes and paste this in web browser to see the page. 
 
-URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
-
+# Updated on 19-03-2020: The url is changed from 
+# URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
+# to
+URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"
 # Actual Web Scraping the URL
 
 # In this line we will read the url using 'read_html' function.

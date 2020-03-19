@@ -1,9 +1,9 @@
-install.packages(stringr)
-install.packages(maps)
-install.packages(ggplot2)
-install.packages(sf)
-install.packages(dplyr)
-install.packages(raster)
+install.packages("stringr")
+install.packages("maps")
+install.packages("ggplot2")
+install.packages("sf")
+install.packages("dplyr")
+install.packages("raster")
 install.packages("GADMTools")
 install.packages("rgeos")
 install.packages("leaflet")
@@ -36,9 +36,11 @@ setdiff(as.character(Countriestable$Countries), CountriesAvailable$region)
 # Before
 Countriestable$Countries
 
+# Changes reqruied in the names of the countries
 Countriestable$Countries <- recode(Countriestable$Countries, "United States" = "USA")
 Countriestable$Countries <- recode(Countriestable$Countries, "United Kingdom" = "UK")
-Countriestable$Countries <- recode(Countriestable$Countries, "The Republic of Korea" = "South Korea")
+# Updated on 19-03-20: Change of Republic of Korea to South Korea
+Countriestable$Countries <- recode(Countriestable$Countries, "Republic of Korea" = "South Korea")
 #Update
 Countriestable$Countries <- recode(Countriestable$Countries, "North Macedonia" = "Macedonia")
 Countriestable$Countries <- recode(Countriestable$Countries, "Bosnia" = "Bosnia and Herzegovina")
@@ -46,6 +48,34 @@ Countriestable$Countries <- recode(Countriestable$Countries, "Holy See (Vatican 
 Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech Republic")
 # Update Dated 12-03-2020
 Countriestable$Countries <- recode(Countriestable$Countries, "Brunei Darussalam" = "Brunei")
+#Updated on 19-03-2020
+Countriestable$Countries <- recode(Countriestable$Countries, "Eswatini" = "Swaziland")
+Countriestable$Countries <- recode(Countriestable$Countries, "Ivory Coast (Côte d’Ivoire)" = "Ivory Coast")
+Countriestable$Countries <- recode(Countriestable$Countries, "Congo" = "Democratic Republic of the Congo")
+
+# Deleted the combinations of countries and the duplicated values. Combinations will be added later on appended separately. 
+#Updated on 19-03-2020
+Countriestable<-Countriestable[!(Countriestable$Countries=="Antigua and Barbuda"),]
+Countriestable<-Countriestable[!(Countriestable$Countries=="Democratic Republic of Congo"),]
+Countriestable<-Countriestable[!(Countriestable$Countries=="Saint Vincent and the Grenadines"),]
+Countriestable <- Countriestable[!(Countriestable$Countries=="Trinidad and Tobago"),]
+#Updated on 19-03-2020
+Country_Antigua <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Antigua")
+Countriestable <-  rbind(Countriestable, Country_Antigua)
+Country_Barbuda <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Barbuda")
+Countriestable <-  rbind(Countriestable, Country_Barbuda)
+# Added two new names and deleted their combination
+#Updated on 19-03-2020
+Country_SaintVincent <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Saint Vincent")
+Countriestable <-  rbind(Countriestable, Country_SaintVincent)
+Country_Grenadines <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Grenadines")
+Countriestable <-  rbind(Countriestable, Country_Grenadines)
+# Added two new names and deleted their combination above
+#Updated on 19-03-2020
+Country_Trinidad <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Trinidad")
+Countriestable <-  rbind(Countriestable, Country_Trinidad)
+Country_Tobago <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Tobago")
+Countriestable <-  rbind(Countriestable, Country_Tobago)
 
 # After Changes
 Countriestable$Countries
