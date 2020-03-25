@@ -26,6 +26,11 @@ How to Plot Values of Cases of COVID-19 on Interactive MAP in R by using leaflet
 [https://youtu.be/a4LXFcEuRUU](https://youtu.be/a4LXFcEuRUU)<br/>
 *Code Available in File* : `Part3_PlottingValuesonLeaflet.R`
 
+**Part 4**:<br/> 
+Part 4- How to make Animated Plots of COVID-19 Cases in R by using ggplot, ggplotly and plotly. <br/>
+[https://youtu.be/AZ0_Zoyv1g4](https://youtu.be/AZ0_Zoyv1g4)<br/>
+*Code Available in File* : `Part4_Timeseries.R`
+
 ---
 ---
 
@@ -812,6 +817,15 @@ saveWidget(Mapwithvalues, file="map1.html", selfcontained=FALSE)
 ```
 
 You can search the path where it is stored by `getwd()` or `setwd()` before saving. 
+
+
+---
+---
+
+## **Part 4** -- How to make Animated Plots of COVID-19 Cases in R by using ggplot, ggplotly and plotly (Part4_Timeseries.R)
+
+Link of the video is [https://youtu.be/AZ0_Zoyv1g4](https://youtu.be/AZ0_Zoyv1g4). The description of the code is either in comments or will be updated here after a short interval.
+
 
 
 ---
