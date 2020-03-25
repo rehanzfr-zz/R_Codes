@@ -17,8 +17,10 @@ PAGE <- read_html(URL) %>%
 
 # UPDATE ON THIS LINE OF CODE (*Dated: 07-March-2020*): 
 # The video contains the xpath to previous version of CDC website. Previously that `xpath` was `/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul` which can be seen in the video and in above lines but after the CDC has updated the website along with the list of affected countries, We now have to change the xpath in our code too. The new xpath is now `/html/body/div[6]/main/div[3]/div/div[3]/div[2]` that is updated below as well:
+# UPDATE (Dated: 25/03/2020)
+# Now the xpath is again changed to "/html/body/div[7]/main/div[3]/div/div[3]/div[2]" so instead of previous one "/html/body/div[6]/main/div[3]/div/div[3]/div[2]" we will use new one. 
   
-    html_nodes(xpath="/html/body/div[6]/main/div[3]/div/div[3]/div[2]") %>%
+    html_nodes(xpath="/html/body/div[7]/main/div[3]/div/div[3]/div[2]") %>%
   
 # Now the map function of purrr package will be used to get the 'li' node of html which actually contains all the names of the countries. 
   

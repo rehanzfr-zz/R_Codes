@@ -17,12 +17,23 @@ library(htmlwidgets)
 library(htmltools)
 #------------------------------------------
 # Copy the raw path of CSVs
+# Update (Dated: *25-03-2020*)
+# The data files currently in use below are deprecated. The new files on the same github repo are changed. Following message can be seen on [https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)
+# *---DEPRICATED WARNING---
+# The files below will no longer be updated. With the release of the new data structure, we are updating our time series tables to reflect these changes. Please reference time_series_covid19_confirmed_global.csv and time_series_covid19_deaths_global.csv for the latest time series data.*
 
 Main <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"
-confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
+# Updated on 25-03-2020
+# confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
+confirmed <-  file.path(Main,"time_series_covid19_confirmed_global.csv")
+# 
 confirmed
-Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
+# Updated on 25-03-2020
+# Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
+Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
 Deaths
+# Updated on 25-03-2020
+# The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
 Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
 Recoverd
 ConfirmedData <- read.csv(confirmed)

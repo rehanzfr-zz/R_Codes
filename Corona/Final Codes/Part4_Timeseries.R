@@ -9,13 +9,30 @@ library(plotly)
 library(cowplot)
 library(grid)
 
+
+
+  
 # Main Path for getting the data in the form of CSVs
 Main <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"
+# Update (Dated: *25-03-2020*)
+# The data files currently in use below are deprecated. The new files on the same github repo are changed. Following message can be seen on [https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)
+# *---DEPRICATED WARNING---
+#  The files below will no longer be updated. With the release of the new data structure, we are updating our time series tables to reflect these changes. Please reference time_series_covid19_confirmed_global.csv and time_series_covid19_deaths_global.csv for the latest time series data.*
 
 # We are saving the links to each CSVs in separate objects
-confirmed_Path <- file.path(Main,"time_series_19-covid-Confirmed.csv")
-Deaths_Path    <- file.path(Main,"time_series_19-covid-Deaths.csv")
-Recoverd_Path  <- file.path(Main,"time_series_19-covid-Recovered.csv")
+# Updated on 25-03-2020
+# confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
+confirmed <-  file.path(Main,"time_series_covid19_confirmed_global.csv")
+# 
+confirmed
+# Updated on 25-03-2020
+# Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
+Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
+Deaths
+# Updated on 25-03-2020
+# The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
+Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+Recoverd
 
 # Now, we are reading the data stored in each link
 ConfirmedData <- read.csv(confirmed_Path,stringsAsFactors = FALSE)
@@ -197,7 +214,58 @@ fig2 <- plot_ly() %>%
 # Plot the fig2
 fig2
 
+fig3 <- plot_ly() %>%  
+  
+  # We are going to add the information of Confirmed cases by using add_trace()
+  add_trace(data=AllData, 
+            x = ~Date, 
+            y = ~Confirmed, 
+            name= 'Confirmed', 
+            type = 'scatter', 
+            mode = 'lines+markers', 
+            marker = list(size = 10, 
+                          color = 'rgba(51, 153, 255, .5)', 
+                          line = list(color = 'rgba(0, 38, 77, .8)', width = 2)), 
+            line = list(color = 'rgba(0, 38, 77, .8)', 
+                        width = 2)) %>% 
+  
+  # We are going to add the information of Recovered cases by using add_trace()
+  add_trace(data=AllData, 
+            x = ~Date, 
+            y = ~Recovered, 
+            name='Recovered', 
+            type = 'scatter', 
+            mode = 'lines+markers', 
+            marker = list(size = 10, 
+                          color = 'rgba(153, 255, 153, .8)', 
+                          line = list(color = 'rgba(0, 179, 0, .8)', width = 2)), 
+            line = list(color = 'rgba(0, 179, 0, .8)', 
+                        width = 2)) %>% 
+  
+  # We are going to add the information of Deaths by using add_trace()
+  add_trace(data=AllData, 
+            x = ~Date, 
+            y = ~Deaths, 
+            name='Deaths', 
+            type = 'scatter', 
+            mode = 'lines+markers',
+            marker = list(size = 10, 
+                          color = 'rgba(255, 102, 102, .5)', 
+                          line = list(color = 'rgba(152, 0, 0, .8)', width = 2)), 
+            line = list(color = 'rgba(152, 0, 0, 1)', 
+                        width = 2)) %>% 
+  # Formating the layout of the graph
+  layout(legend=list(x = 100, y = 0.5, yanchor="top"), 
+         title = list(text=paste("<b> Cases Over the Period of Time in",Region, "Since First Report </b>"), 
+                      size = 10), 
+         xaxis=list(autoscale=FALSE,
+                    range = c(head(frames$Date, n=1),tail(frames$Date, n=1)+2),
+                    title = "<b> Days </b>"), 
+         yaxis=list(title = "<b> Cases </b>"))
 # Now If you want to generate three separate graphs by using plot_ly() function. First, subplotly1 represents the graph for confirmed cases. 
+
+fig3
+
 subplotly1 <-  plot_ly(AllData, 
                        x = ~Date, 
                        y = ~Confirmed,

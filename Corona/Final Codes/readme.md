@@ -58,8 +58,11 @@ After reading the html we will extract the html object by using the xpath from t
  
 The video contains the xpath to previous version of CDC website. Previously that `xpath` was `/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul` which can be seen in the video and in above lines but after the CDC has updated the website along with the list of affected countries, We now have to change the xpath in our code too. The new xpath is now `/html/body/div[6]/main/div[3]/div/div[3]/div[2]` that is updated below as well:  
 
+> UPDATE ON THIS LINE OF CODE (Dated: 25/03/2020)
+Now the xpath is again changed to `/html/body/div[7]/main/div[3]/div/div[3]/div[2]` so instead of previous one `/html/body/div[6]/main/div[3]/div/div[3]/div[2]`, we will use new one. 
+
 ```R
-html_nodes(xpath="/html/body/div[6]/main/div[3]/div/div[3]/div[2]") %>%
+html_nodes(xpath="/html/body/div[7]/main/div[3]/div/div[3]/div[2]") %>%
 ```
 
 Now, the map function of purrr package will be used to get the `li` node of html which actually contains all the names of the countries. 
@@ -193,6 +196,22 @@ So we have to change some names including that of United states to USA, United K
 
 > Updated on *19-March-2020*: The names of several countries or regions were defined combined. So they were first deleted from the dataframe and then these were appended seprately. Moreover, one country was defined two times on CDC by their different names such as `Congo` and `Democratic Republic of Congo`. So the later one is deleted where former is changed to `Democratic Republic of the Congo`. Now where you will see the Updated on 19-03-2020 so these are updated at this date after the video. 
 
+> Updated on *25-March-2020*
+> Setdiff is showing these countries
+
+```R
+[1] "Cabo Verde"                       "Congo"                           
+ [3] "Eswatini"                         "Democratic Republic of Congo"    
+ [5] "Ivory Coast (Côte d’Ivoire)"      "Antigua and Barbuda"             
+ [7] "Guadalupe"                        "Saint Vincent and the Grenadines"
+ [9] "Trinidad and Tobago"              "United States"                   
+[11] "Czechia"                          "Gibraltar"                       
+[13] "Holy See (Vatican City)"          "North Macedonia"                 
+[15] "United Kingdom"                   "Brunei Darussalam"               
+[17] "Hong Kong"                        "Macau"                           
+[19] "Republic of Korea"               
+```
+among which only `Cabo Verde` that is also known as `Cape Verde` is not updated in this code until this date. `Cape Verde` is actually present in the package for mapping So we will change the name in the following code.  
 
 Before
 
@@ -245,6 +264,9 @@ Country_Trinidad <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Trinidad
 Countriestable <-  rbind(Countriestable, Country_Trinidad)
 Country_Tobago <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Tobago")
 Countriestable <-  rbind(Countriestable, Country_Tobago)
+
+# Updated on 25-03-2020
+Countriestable$Countries <- recode(Countriestable$Countries, "Cabo Verde" = "Cape Verde")
 ```
 
 
@@ -452,15 +474,28 @@ For the time series data (means the status of confirmed cases, deaths and recove
 
 Now on the page [https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series), you can see three categories i.e. [time_series_19-covid-Confirmed.csv](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv), [time_series_19-covid-Deaths.csv](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv), [time_series_19-covid-Recovered.csv](https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv). These CSV files (CSV is the extension of files) can be opened on github but are not suitable for fetching data in python or R. So click each link to the files and go the `raw` button. This will open a new page. Copy the links to each raw data of these files and paste somewhere with you. The links to the raw data looks like:
 
+> Update (Dated: *25-03-2020*)
+> The data files currently in use below are deprecated. The new files on the same github repo are changed. Following message can be seen on [https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series)
+> *---DEPRICATED WARNING---
+The files below will no longer be updated. With the release of the new data structure, we are updating our time series tables to reflect these changes. Please reference time_series_covid19_confirmed_global.csv and time_series_covid19_deaths_global.csv for the latest time series data.*
+
+
 ```R
 # Confirmed Cases
- https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv
-
+# Old Link https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv
+# Updated link (25-03-2020)
+https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
 # Deaths
- https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv
+# Deprecated old link: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv
+# Updated link (25-03-2020)
+https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv
 
 # Recovered Cases
- https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv
+# Deprecated old link: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv
+# Updated link (25-03-2020)
+# It is still not available and last three rows are showing something recovered in above links which may be due to any problem in data transformation. Issue has been submitted on github #1519.
+
+
 ```
 
 If you observer then there is a common path in all these links which is ` https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/`. So first of all grab it  as `Main`:
@@ -472,10 +507,17 @@ Main <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_c
 Here, `file.path` is used to join the `Main` with names of the CSV files in each case. It is just like adding ` https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/` with `time_series_19-covid-Confirmed.csv` to make `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv`
 
 ```R
-confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
+# Updated on 25-03-2020
+# confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
+confirmed <-  file.path(Main,"time_series_covid19_confirmed_global.csv")
+# 
 confirmed
-Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
+# Updated on 25-03-2020
+# Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
+Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
 Deaths
+# Updated on 25-03-2020
+# The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
 Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
 Recoverd
 ```

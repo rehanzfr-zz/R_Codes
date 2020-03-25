@@ -77,6 +77,9 @@ Countriestable <-  rbind(Countriestable, Country_Trinidad)
 Country_Tobago <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Tobago")
 Countriestable <-  rbind(Countriestable, Country_Tobago)
 
+# Updated on 25-03-2020
+Countriestable$Countries <- recode(Countriestable$Countries, "Cabo Verde" = "Cape Verde")
+
 # After Changes
 Countriestable$Countries
 
