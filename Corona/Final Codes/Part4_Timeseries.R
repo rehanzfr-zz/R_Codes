@@ -31,7 +31,9 @@ Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
 Deaths
 # Updated on 25-03-2020
 # The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
-Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+# Updated on 12-04-2020
+# The csv is updated from  `time_series_19-covid-Recovered.csv` to `time_series_covid19_recovered_global.csv`
+Recoverd<- file.path(Main,"time_series_covid19_recovered_global.csv")
 Recoverd
 
 # Now, we are reading the data stored in each link
