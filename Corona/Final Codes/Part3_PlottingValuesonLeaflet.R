@@ -8,6 +8,7 @@ install.packages("knitr")
 install.packages("RCurl")
 install.packages("htmlwidgets")
 install.packages("htmltools")
+install.packages("leaflet")
 
 # Call Libraries
 library(readr)
@@ -15,6 +16,7 @@ library(knitr)
 library(RCurl)
 library(htmlwidgets)
 library(htmltools)
+library(leaflet)
 #------------------------------------------
 # Copy the raw path of CSVs
 # Update (Dated: *25-03-2020*)
@@ -34,8 +36,12 @@ Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
 Deaths
 # Updated on 25-03-2020
 # The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
-Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+
+# UPDATED on 28-04-2020 (reported by Jess Z in YouTube comments)
+# Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+Recoverd<- file.path(Main,"time_series_covid19_recovered_global.csv")
 Recoverd
+
 ConfirmedData <- read.csv(confirmed)
 DeathData <- read.csv(Deaths)
 RecoveredData <-  read.csv(Recoverd)
@@ -51,8 +57,7 @@ cleanDateColumn <- gsub('X','',DateColumn)
 #------------------------------------------
 # Different popups for Confirmed, Deaths and Recovered Cases. These popups will popup when we click the circles.
 
-popupConfirmed <- paste("
-                        <strong>County: </strong>", 
+popupConfirmed <- paste("<strong>County: </strong>", 
                         ConfirmedData$Country.Region, 
                         "<br><strong>Province/State: </strong>", 
                         ConfirmedData$Province.State, 
@@ -60,8 +65,7 @@ popupConfirmed <- paste("
                         ConfirmedData[,DateColumn]
                         )
 
-popupdeath <- paste("
-                    <strong>County: </strong>", 
+popupdeath <- paste("<strong>County: </strong>", 
                     DeathData$Country.Region, 
                     "<br><strong>Province/State: </strong>", 
                     DeathData$Province.State, 
@@ -69,8 +73,7 @@ popupdeath <- paste("
                     DeathData[,DateColumn] 
                     )
 
-popupRecovered <- paste("
-                        <strong>County: </strong>", 
+popupRecovered <- paste("<strong>County: </strong>", 
                         RecoveredData$Country.Region, 
                         "<br><strong>Province/State: </strong>", 
                         RecoveredData$Province.State, 
@@ -90,8 +93,7 @@ palrecovered <- colorBin(palette = "BuGn", domain = RecoveredData[,DateColumn] ,
 #------------------------------------------
 # We want to add text on the map which represent Title, Subtitle and number of cases. For this we will use CSS styles and HTML. 
 
-title <- tags$style(HTML("
-                         .map-title {
+title <- tags$style(HTML(".map-title {
                          font-family: 'Cool Linked Font', fantasy; 
                          transform: translate(-10%,20%); 
                          position: fixed !important; 
@@ -101,28 +103,23 @@ title <- tags$style(HTML("
                          padding-right: 10px; 
                          background: rgba(255,255,255,0.75); 
                          font-weight: bold; 
-                         font-size: 25px}")
-                        )
+                         font-size: 25px}"))
 
 
-subtitle <- tags$style(HTML("
-                            .map-subtitle {
+subtitle <- tags$style(HTML(".map-subtitle {
                             transform: translate(-10%,150%);
                             position: fixed !important;
                             left: 10%;
                             text-align: left;
                             padding-left: 10px;
                             padding-right: 10px;
-                            font-size: 18px}")
-                            )
+                            font-size: 18px}"))
 
-CasesLabel<- tags$style(HTML("
-                             .cases-label{
+CasesLabel<- tags$style(HTML(".cases-label{
                              position: absolute; 
                              bottom: 8px; 
                              left: 16px; 
-                             font-size: 18px}")
-                            )
+                             font-size: 18px}"))
 #------------------------------------------
 # Here we will write what we want to show as Title, Subtitle and Cases in HTML format over Map. 
 
@@ -255,7 +252,7 @@ addLegend("bottomright",
 #------------------
 # In the following code, we are actually showing the check boxes for showing or hiding the circles and values for cases. 
 
-addLayersControl(overlayGroups = c("Circles(Confirmed)","Values(Confirmed)" ,"Circles(Recovered)","Values(Recovered)", "Circles(Death)","Values(Death)"), options = layersControlOptions(collapsed = FALSE)) %>%
+addLayersControl(overlayGroups = c("Circles(Confirmed)","Values(Confirmed)" ,"Circle(Recovered)","Values(Recovered)", "Circles(Death)","Values(Death)"), options = layersControlOptions(collapsed = FALSE)) %>%
 
   
 #------------------

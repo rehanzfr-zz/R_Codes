@@ -50,7 +50,7 @@ Countriestable$Countries <- recode(Countriestable$Countries, "Czechia" = "Czech 
 Countriestable$Countries <- recode(Countriestable$Countries, "Brunei Darussalam" = "Brunei")
 #Updated on 19-03-2020
 Countriestable$Countries <- recode(Countriestable$Countries, "Eswatini" = "Swaziland")
-Countriestable$Countries <- recode(Countriestable$Countries, "Ivory Coast (CÃ´te dâ€™Ivoire)" = "Ivory Coast")
+Countriestable$Countries <- recode(Countriestable$Countries, "Ivory Coast (Côte d'Ivoire)" = "Ivory Coast")
 Countriestable$Countries <- recode(Countriestable$Countries, "Congo" = "Democratic Republic of the Congo")
 
 # Deleted the combinations of countries and the duplicated values. Combinations will be added later on appended separately. 
@@ -59,6 +59,9 @@ Countriestable<-Countriestable[!(Countriestable$Countries=="Antigua and Barbuda"
 Countriestable<-Countriestable[!(Countriestable$Countries=="Democratic Republic of Congo"),]
 Countriestable<-Countriestable[!(Countriestable$Countries=="Saint Vincent and the Grenadines"),]
 Countriestable <- Countriestable[!(Countriestable$Countries=="Trinidad and Tobago"),]
+# Updated on 28-04-2020
+Countriestable <- Countriestable[!(Countriestable$Countries=="Saint Kitts and Nevis"),]
+
 #Updated on 19-03-2020
 Country_Antigua <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Antigua")
 Countriestable <-  rbind(Countriestable, Country_Antigua)
@@ -79,6 +82,23 @@ Countriestable <-  rbind(Countriestable, Country_Tobago)
 
 # Updated on 25-03-2020
 Countriestable$Countries <- recode(Countriestable$Countries, "Cabo Verde" = "Cape Verde")
+
+# Updated on 28-04-2020
+
+Countriestable$Countries <- recode(Countriestable$Countries, "São Tomé and Príncipe" = "Sao Tome and Principe")
+Countriestable$Countries <- recode(Countriestable$Countries, "United Republic of Tanzania" = "Tanzania")
+Countriestable$Countries <- recode(Countriestable$Countries, "Syrian Arab Republic" = "Syria")
+Countriestable$Countries <- recode(Countriestable$Countries, "Republic of Moldova" = "Moldova")
+Countriestable$Countries <- recode(Countriestable$Countries, "Russian Federation" = "Russia")
+Countriestable$Countries <- recode(Countriestable$Countries, "Lao People's Democratic Republic" = "Laos")
+Countriestable$Countries <- recode(Countriestable$Countries, "Viet Nam" = "Vietnam")
+
+# Updated on 28-04-2020: Added two new names after deleting their combination as Saint Kitts and Nevis
+Country_SaintKitts <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Saint Kitts")
+Countriestable <-  rbind(Countriestable, Country_SaintKitts)
+Country_Nevis <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Nevis")
+Countriestable <-  rbind(Countriestable, Country_Nevis)
+
 
 # After Changes
 Countriestable$Countries
