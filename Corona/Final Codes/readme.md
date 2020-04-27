@@ -837,6 +837,21 @@ You can search the path where it is stored by `getwd()` or `setwd()` before savi
 Link of the video is [https://youtu.be/AZ0_Zoyv1g4](https://youtu.be/AZ0_Zoyv1g4). The description of the code is either in comments or will be updated here after a short interval.
 
 
+---
+---
+
+## **Part 5- Chapter 1** - Dashboard for COVID-19 cases in R by using Flexdashboard and Shiny. (Ch 1 Layout Design): 
+ <br/>
+Link of the video is [https://youtu.be/hcquBsMdjhU](https://youtu.be/hcquBsMdjhU)<br/>
+*Code Available in File* : `SimpleLayout(Part5Chapter1).Rmd` in folder `Flexdashboard`
+
+---
+---
+
+## **Part 5 - Chapter 2** - Dashboard for COVID-19 cases in R by using Flexdashboard and Shiny. (Ch 2 Data Generation): 
+
+Link of the video is [https://youtu.be/7PiaXpBb-Mw](https://youtu.be/7PiaXpBb-Mw)<br/>
+*Code Available in File* : `DataGenerationforDashboard(Part5Chapter2).R` in folder `Flexdashboard`
 
 ---
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
