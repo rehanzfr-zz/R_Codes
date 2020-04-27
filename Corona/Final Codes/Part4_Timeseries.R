@@ -22,16 +22,18 @@ Main <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_c
 # We are saving the links to each CSVs in separate objects
 # Updated on 25-03-2020
 # confirmed <-  file.path(Main,"time_series_19-covid-Confirmed.csv")
-confirmed <-  file.path(Main,"time_series_covid19_confirmed_global.csv")
+confirmed_Path <-  file.path(Main,"time_series_covid19_confirmed_global.csv")
 # 
 confirmed
 # Updated on 25-03-2020
 # Deaths <- file.path(Main,"time_series_19-covid-Deaths.csv")
-Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
+Deaths_Path <- file.path(Main,"time_series_covid19_deaths_global.csv")
 Deaths
 # Updated on 25-03-2020
 # The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
-Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+# Updated on 12-04-2020
+# The csv is updated from  `time_series_19-covid-Recovered.csv` to `time_series_covid19_recovered_global.csv`
+Recoverd_Path <- file.path(Main,"time_series_covid19_recovered_global.csv")
 Recoverd
 
 # Now, we are reading the data stored in each link
