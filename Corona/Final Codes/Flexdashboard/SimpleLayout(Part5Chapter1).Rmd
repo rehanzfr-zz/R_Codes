@@ -1,0 +1,149 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+  orientation: columns
+  vertical_layout: fill
+  theme: cosmo
+runtime: shiny
+---
+  
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r}
+```
+
+Geographical Status
+=========================================
+  
+### Frame 1 {data-commentary-width=400}
+  
+```{r}
+
+```
+
+Time Series {data-orientation=columns}
+=========================================
+  
+Row {data-height=650}
+-------------------------------------
+  
+### Overall situation since start
+  
+```{r}
+```
+
+Row {data-height=350}
+-------------------------------------
+  
+### Confirmed Cases
+  
+```{r}
+```   
+
+### Recovered Cases
+
+```{r}
+
+```
+
+### Expired Cases
+
+```{r}
+
+```
+
+Time Series Animation {data-orientation=columns}
+=========================================
+  
+Row {data-height=650}
+-------------------------------------
+  
+### Animated Graph
+  
+```{r}
+
+```
+
+News from Pakistan {data-orientation=rows}
+=========================================
+  
+Row {.tabset .tabset-fade}
+-------------------------------------
+  
+### Under Development {data-height=3000}
+  
+```{r}
+
+```
+
+### Under Development {data-height=3000}
+
+```{r}
+
+```
+
+### Under Development {data-height=3000}
+
+```{r}
+
+```
+
+About us and Data {data-orientation=rows}
+=========================================
+  
+### About Us {data-height=3000}
+  
+```{r}
+
+```
+
+Raw Data {data-orientation=rows}
+=========================================
+  
+Row {.tabset .tabset-fade}
+-------------------------------------
+  
+### Confirmed Cases {data-height=3000}
+  
+```{r}
+
+```
+
+### Recovered Cases {data-height=3000}
+
+```{r}
+
+```
+
+### Deaths {data-height=3000}
+
+```{r}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

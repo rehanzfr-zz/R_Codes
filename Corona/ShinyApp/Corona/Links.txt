@@ -1,2 +1,0 @@
-https://stackoverflow.com/questions/44265512/creating-a-timeline-in-r
-https://shiny.rstudio.com/gallery/basic-datatable.html
