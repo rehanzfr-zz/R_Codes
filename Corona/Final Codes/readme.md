@@ -76,8 +76,11 @@ The video contains the xpath to previous version of CDC website. Previously that
 > UPDATE ON THIS LINE OF CODE (Dated: 25/03/2020)
 Now the xpath is again changed to `/html/body/div[7]/main/div[3]/div/div[3]/div[2]` so instead of previous one `/html/body/div[6]/main/div[3]/div/div[3]/div[2]`, we will use new one. 
 
+> UPDATE ON THIS LINE OF CODE (Dated: 28/04/2020)
+# Now the xpath is again changed to "/html/body/div[7]/main/div[3]/div/div[4]/div[2]" so instead of previous one "/html/body/div[7]/main/div[3]/div/div[3]/div[2]" we will use new one.
+
 ```R
-html_nodes(xpath="/html/body/div[7]/main/div[3]/div/div[3]/div[2]") %>%
+html_nodes(xpath="/html/body/div[7]/main/div[3]/div/div[4]/div[2]") %>%
 ```
 
 Now, the map function of purrr package will be used to get the `li` node of html which actually contains all the names of the countries. 
@@ -262,6 +265,9 @@ Countriestable<-Countriestable[!(Countriestable$Countries=="Antigua and Barbuda"
 Countriestable<-Countriestable[!(Countriestable$Countries=="Democratic Republic of Congo"),]
 Countriestable<-Countriestable[!(Countriestable$Countries=="Saint Vincent and the Grenadines"),]
 Countriestable <- Countriestable[!(Countriestable$Countries=="Trinidad and Tobago"),]
+# Updated on 28-04-2020
+Countriestable <- Countriestable[!(Countriestable$Countries=="Saint Kitts and Nevis"),]
+
 #Updated on 19-03-2020
 Country_Antigua <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Antigua")
 Countriestable <-  rbind(Countriestable, Country_Antigua)
@@ -282,6 +288,22 @@ Countriestable <-  rbind(Countriestable, Country_Tobago)
 
 # Updated on 25-03-2020
 Countriestable$Countries <- recode(Countriestable$Countries, "Cabo Verde" = "Cape Verde")
+
+# Updated on 28-04-2020
+
+Countriestable$Countries <- recode(Countriestable$Countries, "São Tomé and Príncipe" = "Sao Tome and Principe")
+Countriestable$Countries <- recode(Countriestable$Countries, "United Republic of Tanzania" = "Tanzania")
+Countriestable$Countries <- recode(Countriestable$Countries, "Syrian Arab Republic" = "Syria")
+Countriestable$Countries <- recode(Countriestable$Countries, "Republic of Moldova" = "Moldova")
+Countriestable$Countries <- recode(Countriestable$Countries, "Russian Federation" = "Russia")
+Countriestable$Countries <- recode(Countriestable$Countries, "Lao People’s Democratic Republic" = "Laos")
+Countriestable$Countries <- recode(Countriestable$Countries, "Viet Nam" = "Vietnam")
+
+# Updated on 28-04-2020: Added two new names after deleting their combination as Saint Kitts and Nevis
+Country_SaintKitts <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Saint Kitts")
+Countriestable <-  rbind(Countriestable, Country_SaintKitts)
+Country_Nevis <- data.frame(Sr.No.=nrow(Countriestable)+1,Countries="Nevis")
+Countriestable <-  rbind(Countriestable, Country_Nevis)
 ```
 
 
@@ -533,7 +555,10 @@ Deaths <- file.path(Main,"time_series_covid19_deaths_global.csv")
 Deaths
 # Updated on 25-03-2020
 # The updated file on the recovered data is still awaited, for tutorial we are taking the deprecated file which will be updated later.
-Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+# UPDATED on 28-04-2020 (reported by Jess Z in YouTube comments)
+# The file name time_series_19-covid-Recovered.csv is changed to time_series_covid19_recovered_global.csv. So we are going to put new name of the CSV file for recovered persons. 
+# Recoverd<- file.path(Main,"time_series_19-covid-Recovered.csv")
+Recoverd<- file.path(Main,"time_series_covid19_recovered_global.csv")
 Recoverd
 ```
 
@@ -560,8 +585,7 @@ cleanDateColumn <- gsub('X','',DateColumn)
 In the following code, different popups for Confirmed, Deaths and Recovered Cases are designed to be shown on the map. These popups will popup when we click the circles used for showing the number of cases in each category. For example, `popupConfirmed` is an html syntax used in R to make a popup. This html looks like `<strong>County: </strong> US <br><strong>Province/State: </strong> Snohomish County, WA <br><strong>Confirmed: </strong> 1`. If you copy this code in html editor than you can find its format. I have shown it in video. Similarly, `popupdeath` is used to define the popup when deaths are shown in circles and `popupRecovered` show the recovered cases.  
 
 ```R
-popupConfirmed <- paste("
-                        <strong>County: </strong>", 
+popupConfirmed <- paste("<strong>County: </strong>", 
                         ConfirmedData$Country.Region, 
                         "<br><strong>Province/State: </strong>", 
                         ConfirmedData$Province.State, 
@@ -569,8 +593,7 @@ popupConfirmed <- paste("
                         ConfirmedData[,DateColumn]
                         )
 
-popupdeath <- paste("
-                    <strong>County: </strong>", 
+popupdeath <- paste("<strong>County: </strong>", 
                     DeathData$Country.Region, 
                     "<br><strong>Province/State: </strong>", 
                     DeathData$Province.State, 
@@ -578,8 +601,7 @@ popupdeath <- paste("
                     DeathData[,DateColumn] 
                     )
 
-popupRecovered <- paste("
-                        <strong>County: </strong>", 
+popupRecovered <- paste("<strong>County: </strong>", 
                         RecoveredData$Country.Region, 
                         "<br><strong>Province/State: </strong>", 
                         RecoveredData$Province.State, 
@@ -612,8 +634,7 @@ Now, we want to add text on the map which represent Title, Subtitle and number o
 What is CSS? You are right. I will make a video on it separately or search YouTube for now.
 
 ```R
-title <- tags$style(HTML("
-                         .map-title {
+title <- tags$style(HTML(".map-title {
                          font-family: 'Cool Linked Font', fantasy; 
                          transform: translate(-10%,20%); 
                          position: fixed !important; 
@@ -623,28 +644,23 @@ title <- tags$style(HTML("
                          padding-right: 10px; 
                          background: rgba(255,255,255,0.75); 
                          font-weight: bold; 
-                         font-size: 25px}")
-                        )
+                         font-size: 25px}"))
 
 
-subtitle <- tags$style(HTML("
-                            .map-subtitle {
+subtitle <- tags$style(HTML(".map-subtitle {
                             transform: translate(-10%,150%);
                             position: fixed !important;
                             left: 10%;
                             text-align: left;
                             padding-left: 10px;
                             padding-right: 10px;
-                            font-size: 18px}")
-                            )
+                            font-size: 18px}"))
 
-CasesLabel<- tags$style(HTML("
-                             .cases-label{
+CasesLabel<- tags$style(HTML(".cases-label{
                              position: absolute; 
                              bottom: 8px; 
                              left: 16px; 
-                             font-size: 18px}")
-                            )
+                             font-size: 18px}"))
 ```
 
 Here we will write what we want to show as Title, Subtitle and Cases in HTML format over Map. As you remember from above, `DateColumn` has a value of `X29.2.20` that is the column header of the last/latest column at the time of coding this code. Now, if I want to extract the values of that column from data object of confirmed cases that is `ConfirmedData` then I have to issue  `ConfirmedData[,DateColumn]` which means get the values of column with header `X29.2.20` from data file `ConfirmedData`. Please remember the place of comma. Before it are rows and after it are columns. 
