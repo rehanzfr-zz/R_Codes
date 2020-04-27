@@ -841,8 +841,8 @@ Link of the video is [https://youtu.be/AZ0_Zoyv1g4](https://youtu.be/AZ0_Zoyv1g4
 ---
 
 ## **Part 5- Chapter 1** - Dashboard for COVID-19 cases in R by using Flexdashboard and Shiny. (Ch 1 Layout Design): 
- <br/>
-Link of the video is [https://youtu.be/hcquBsMdjhU](https://youtu.be/hcquBsMdjhU)<br/>
+
+Link of the video is [https://youtu.be/hcquBsMdjhU](https://youtu.be/hcquBsMdjhU) <br/>
 *Code Available in File* : `SimpleLayout(Part5Chapter1).Rmd` in folder `Flexdashboard`
 
 ---
