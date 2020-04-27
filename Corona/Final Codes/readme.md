@@ -31,6 +31,15 @@ Part 4- How to make Animated Plots of COVID-19 Cases in R by using ggplot, ggplo
 [https://youtu.be/AZ0_Zoyv1g4](https://youtu.be/AZ0_Zoyv1g4)<br/>
 *Code Available in File* : `Part4_Timeseries.R`
 
+**Part 5 | Chapter 1**:<br/> 
+Part 5 - Dashboard for COVID-19 cases in R by using Flexdashboard and Shiny. (Ch#1 Layout Design) <br/>
+[https://youtu.be/hcquBsMdjhU](https://youtu.be/hcquBsMdjhU)<br/>
+*Code Available in File* : `SimpleLayout(Part5Chapter1).Rmd` in folder `Flexdashboard`
+
+**Part 5 | Chapter 2**:<br/> 
+Part 5 - Dashboard for COVID-19 cases in R by using Flexdashboard and Shiny. (Ch#2 Data Generation) <br/>
+[https://youtu.be/7PiaXpBb-Mw](https://youtu.be/7PiaXpBb-Mw)<br/>
+*Code Available in File* : `DataGenerationforDashboard(Part5Chapter2).R` in folder `Flexdashboard`
 ---
 ---
 
