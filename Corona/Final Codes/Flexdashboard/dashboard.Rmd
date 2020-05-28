@@ -1,0 +1,311 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: cosmo
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r}
+library(leaflet)
+library(htmltools)
+library(plotly)
+library(tidyverse)
+library(DT)
+
+# setting working directory is only required for local compilation. For shinyapps.io, we have to comment it.  
+#setwd("C:/Users/rehan/Desktop/flexdashboard")
+
+# Call the generated CSVs
+ConfirmedData <-read.csv("ConfirmedData.csv",sep = ",")
+RecoveredData <-read.csv("RecoveredData.csv",sep = ",")
+DeathData <- read.csv("DeathData.csv",sep = ",")
+AllData <- read.csv("AllData.csv",sep = ",")
+frames <- read.csv("frames.csv",sep = ",")
+Region <- "Pakistan"
+
+#------------------------------------------
+# Code from Part 3 of this series
+#------------------------------------------
+
+# DateColumn represents which column or date we are interested in for plotting. In my case, last column of the ConfirmedData is the latest info. 
+DateColumn <- colnames(ConfirmedData)[ncol(ConfirmedData)]
+
+cleanDateColumn <- gsub('X','',DateColumn)
+
+
+# One popup for Confirmed. This popup will popup when we will click the circles.
+popupCon <- paste("<strong>County: </strong>", ConfirmedData$Country.Region, "<br><strong>Province/State: </strong>"  , ConfirmedData$Province.State  , "<br><strong>Confirmed: </strong>", ConfirmedData[,DateColumn])
+popupDeaths <- paste("<strong>County: </strong>", DeathData$Country.Region, "<br><strong>Province/State: </strong>"  , DeathData$Province.State  , "<br><strong>Deaths: </strong>", DeathData[,DateColumn])
+popupRecovered <- paste("<strong>County: </strong>", RecoveredData$Country.Region, "<br><strong>Province/State: </strong>"  , RecoveredData$Province.State  , "<br><strong>Recovered: </strong>", RecoveredData[,DateColumn])
+
+# 3 Different Color Palletes for Confirmed, Recovered and Death Cases
+palCon <- colorBin(palette = "GnBu", domain = ConfirmedData[,DateColumn] , bins = 3 , reverse = FALSE)
+palRec <- colorBin(palette = "BuGn", domain = RecoveredData[,DateColumn] , bins = 3 , reverse = FALSE)
+palDeath <- colorBin(palette = "OrRd", domain = DeathData[,DateColumn] , bins = 3 , reverse = FALSE)
+
+# We want to add text on the map which represent Title and Subtitle. For this we will use CSS styles and HTML. 
+title <- tags$style(HTML(".map-title {font-family: 'Cool Linked Font', fantasy; transform: translate(-10%,20%); position: fixed !important; left: 10%; text-align: left; padding-left: 10px; padding-right: 10px; background: rgba(255,255,255,0.75); font-weight: bold; font-size: 25px}"))
+
+subtitle <- tags$style(HTML(".map-subtitle {transform: translate(-10%,150%);position: fixed !important;left: 10%;text-align: left;padding-left: 10px;padding-right: 10px;font-size: 18px}"))
+
+CasesLabel<- tags$style(HTML(".cases-label{position: absolute; bottom: 8px; left: 16px; font-size: 18px}"))
+
+# Here we will write want we want to show as Title, Subtitle in HTML format over Map. 
+
+leaflettitle <- tags$div(title, HTML(paste0("Status of COVID-19 in ", Region)))
+
+leafletsubtitle <- tags$div(subtitle, HTML("YouTube Channel: Dr Rehan Zafar"))  
+                         
+#CasesLabelonMap <- tags$div(CasesLabel, HTML(paste("<strong>Date: </strong>", cleanDateColumn, "<strong>Confirmed: </strong>",sum(as.numeric(ConfirmedData[,DateColumn])), "<strong>Deaths: </strong>",sum(as.numeric(DeathData[,DateColumn])),"<strong>Recovered: </strong>",sum(as.numeric(RecoveredData[,DateColumn])))))
+                         
+boundries <- maps::map("world", Region, fill = TRUE, plot = FALSE)
+
+Mapwithvalues <- leaflet() %>%
+    addTiles() %>%
+    setView(lat=30.3753, lng=69.3451, zoom = 5) %>%
+    addPolygons(data = boundries, group = "Countries", color = "Blue",  weight = 2, smoothFactor = 0.2, fillOpacity = 0.1, highlightOptions = highlightOptions(color = "black", weight = 2,bringToFront = FALSE)) %>%
+  
+# In the following code we will plot Confirmed cases and add the legend for it along with the control to show or hide this data. 
+  
+  # 3 different circle markers for three types of categories of cases.
+  # This one is for ConfirmedData
+  addCircleMarkers(data= ConfirmedData, lng = ~Long, lat = ~Lat, radius = ~log(ConfirmedData[,DateColumn])*5, stroke = TRUE, popup = popupCon, fillOpacity = 0.7, group= "Confirmed",color=~palCon(ConfirmedData[,DateColumn])) %>%
+  # This one is for RecoveredData
+  addCircleMarkers(data= RecoveredData, lng = ~Long, lat = ~Lat, radius = ~log(RecoveredData[,DateColumn])*5, stroke = TRUE, popup = popupRecovered,fillOpacity = 0.7, group="Recovered", color=~palRec(RecoveredData[,DateColumn])) %>%
+  # This one for DeathData
+  addCircleMarkers(data= DeathData, lng = ~Long, lat = ~Lat, radius = ~log(DeathData[,DateColumn])*5, stroke = TRUE, popup = popupDeaths,fillOpacity = 0.7, group="Deaths",color=~palDeath(DeathData[,DateColumn])) %>%
+  # In the following code, we will add title, subtitle, and number of cases over the map.
+  
+  addControl(leaflettitle, position = "topleft", className="map-title") %>%
+    
+  addControl(leafletsubtitle, position = "topleft", className="map-subtitle") %>%
+  
+  addLayersControl(
+    baseGroups=c("Confirmed","Recovered","Deaths"),
+    options= layersControlOptions(collapsed=FALSE)
+  )
+  
+
+#------------------------------------------
+# Code from Part 4 of this series
+#------------------------------------------
+
+# This figure will present the static plot of time series for Confirmed, Recovered and Deaths. 
+fig3 <- plot_ly() %>%  
+    
+    add_trace(data=AllData, x = ~Date, y = ~Confirmed,  name= 'Confirmed', type = 'scatter', mode = 'lines+markers', marker = list(size = 10, color = 'rgba(51, 153, 255, .5)', line = list(color = 'rgba(0, 38, 77, .8)', width = 2)), line = list(color = 'rgba(0, 38, 77, .8)', width = 2)) %>% 
+    
+    add_trace(data=AllData, x = ~Date, y = ~Recovered, name='Recovered', type = 'scatter', mode = 'lines+markers', marker = list(size = 10, color = 'rgba(153, 255, 153, .8)', line = list(color = 'rgba(0, 179, 0, .8)', width = 2)),line = list(color = 'rgba(0, 179, 0, .8)', width = 2)) %>% 
+    
+    # We are going to add the information of Deaths by using add_trace()
+    add_trace(data=AllData,x = ~Date,y = ~Deaths,name='Deaths',type = 'scatter', mode = 'lines+markers',marker = list(size = 10,color = 'rgba(255, 102, 102, .5)', line = list(color = 'rgba(152, 0, 0, .8)', width = 2)),line = list(color = 'rgba(152, 0, 0, 1)', width = 2))
+
+# This figure will present the animated plot of time series for Confirmed, Recovered and Deaths. 
+fig5 <- plot_ly() %>%  
+    
+    # We are going to add the information of Confirmed cases by using add_trace()
+    add_trace(data=frames,x = ~Date, y = ~Confirmed,name= 'Confirmed',frame = ~frame,type = 'scatter',mode = 'lines+markers',marker = list(size = 10, color = 'rgba(51, 153, 255, .5)', line = list(color = 'rgba(0, 38, 77, .8)', width = 2)),line = list(color = 'rgba(0, 38, 77, .8)', width = 2)) %>% 
+    
+    # We are going to add the information of Recovered cases by using add_trace()
+    add_trace(data=frames, x = ~Date, y = ~Recovered, name='Recovered', frame = ~frame,  type = 'scatter', mode = 'lines+markers', marker = list(size = 10, color = 'rgba(153, 255, 153, .8)', line = list(color = 'rgba(0, 179, 0, .8)', width = 2)), line = list(color = 'rgba(0, 179, 0, .8)', width = 2)) %>% 
+    
+    # We are going to add the information of Deaths by using add_trace()
+    add_trace(data=frames, x = ~Date, y = ~Deaths, name='Deaths', frame = ~frame, type = 'scatter', mode = 'lines+markers', marker = list(size = 10, color = 'rgba(255, 102, 102, .5)', line = list(color = 'rgba(152, 0, 0, .8)', width = 2)),  line = list(color = 'rgba(152, 0, 0, 1)', width = 2)) %>% 
+    
+    # Formating the layout of the graph
+    layout(legend=list(x = 100, y = 0.5, yanchor="top"), title = list(text=paste("<b> Cases Over the Period of Time in",Region, "Since First Report </b>"), size = 10),  xaxis=list(autoscale=FALSE, range = c(head(frames$Date, n=1),tail(frames$Date, n=1)), title = "<b> Days </b>"), yaxis=list(title = "<b> Cases </b>")) %>%
+    
+    # Animation options
+    animation_opts(10, easing = "elastic", redraw = TRUE)
+```
+
+Geographical Status
+=========================================
+
+### Frame 1 {data-commentary-width=400}
+
+```{r}
+renderLeaflet({
+  Mapwithvalues 
+})
+
+```
+
+Time Series {data-orientation=columns}
+=========================================
+
+Row {data-height=650}
+-------------------------------------
+
+### Overall situation since start
+
+```{r}
+h2("Comparison of Confirmed, Recovered and Expired Cases")
+
+renderPlotly({
+  
+  fig3
+  
+})
+```
+
+Row {data-height=350}
+-------------------------------------
+   
+### Confirmed Cases
+
+```{r}
+renderPlotly({
+  
+  subplotly1 <-  plot_ly(AllData, x = ~Date, y = ~Confirmed, name='Confirmed', type = 'scatter', mode = 'lines+markers', marker = list(size = 10, color = 'rgba(51, 153, 255, .5)', line = list(color = 'rgba(0, 38, 77, .8)', width = 2)), line = list(color = 'rgba(0, 38, 77, .8)', width = 2))
+  
+  
+  
+  subplotly1
+})
+```   
+    
+### Recovered Cases
+
+```{r}
+renderPlotly({
+  
+    subplotly2 <-  plot_ly(AllData,  x = ~Date, y = ~Recovered, name='Recovered', type = 'scatter', mode = 'lines+markers',  marker = list(size = 10, color = 'rgba(153, 255, 153, .8)',  line = list(color = 'rgba(0, 179, 0, .8)', width = 2)),  line = list(color = 'rgba(0, 179, 0, .8)',  width = 2))
+    
+    subplotly2
+})
+```
+
+### Expired Cases
+
+```{r}
+subplotly3 <- plot_ly(AllData, x = ~Date,  y = ~Deaths, name='Deaths', type = 'scatter',  mode = 'lines+markers', marker = list(size = 10, color = 'rgba(255, 102, 102, .5)',  line = list(color = 'rgba(152, 0, 0, .8)', width = 2)),  line = list(color = 'rgba(152, 0, 0, 1)',  width = 2))
+
+subplotly3
+```
+
+Time Series Animation {data-orientation=columns}
+=========================================
+
+Row {data-height=650}
+-------------------------------------
+
+### Animated Graph
+
+```{r}
+renderPlotly({
+  
+  fig5
+})
+```
+
+News from Pakistan {data-orientation=rows}
+=========================================
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Under Development {data-height=3000}
+
+```{r}
+h2("Under Development")
+```
+
+### Under Development {data-height=3000}
+
+```{r}
+h2("Under Development")
+```
+
+### Under Development {data-height=3000}
+
+```{r}
+h2("Under Development")
+```
+
+About us and Data {data-orientation=rows}
+=========================================
+
+### About Us {data-height=3000}
+
+```{r}
+h2("Data is provided by:")
+h4("2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE") 
+div("The data repository for the 2019 Novel Coronavirus operated by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) also, Supported by ESRI Living Atlas Team and the Johns Hopkins University Applied Physics Lab (JHU APL) is used.")
+
+a(href="https://github.com/CSSEGISandData/COVID-19", "https://github.com/CSSEGISandData/COVID-19")
+
+hr()
+
+h2("About me")
+
+div(" I am a YouTuber and an educator. I make videos on different aspects of science and art. I hope you will enjoy the videos at my YouTube Channel. You can ask for some special topics that you want to see. So please subscribe and stay blessed. Please visit and subscribe if you like.")
+
+a(href="https://www.youtube.com/c/DrRehanZafar", "https://www.youtube.com/c/DrRehanZafar")
+
+```
+
+Raw Data {data-orientation=rows}
+=========================================
+
+Row {.tabset .tabset-fade}
+-------------------------------------
+
+### Confirmed Cases {data-height=3000}
+
+```{r}
+DT::renderDataTable({DT::datatable(
+  
+    ConfirmedData, filter ='top', caption = 'Raw Confirmed cases (although authenticated)', options=list(scrollX = TRUE, scrolly = TRUE,pageLength = 10, lengthChange = FALSE)
+    
+)})
+```
+
+### Recovered Cases {data-height=3000}
+
+```{r}
+DT::renderDataTable({DT::datatable(
+    RecoveredData, filter ='top', caption = 'Raw Recovered Data (although authenticated)', options=list(scrollX = TRUE, scrolly = TRUE,pageLength = 10, lengthChange = FALSE)
+)})
+```
+
+### Deaths {data-height=3000}
+
+```{r}
+DT::renderDataTable({DT::datatable(
+  
+    DeathData, filter ='top', caption = 'Raw Death Data (although authenticated)', options=list(scrollX = TRUE, scrolly = TRUE,pageLength = 10, lengthChange = FALSE)
+)})
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
