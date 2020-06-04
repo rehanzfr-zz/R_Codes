@@ -51,13 +51,42 @@ This is the URL at which the list of affected countries is given. You can visit 
 > Updated on 19-03-2020: The url is changed from `https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map` to
 `https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html` to accomodate changes according to the changes in CDC website.
 
+> Updated on-04-06-2020. 
+ The CDC is continuously changing the web address of its web page. One more thing, the website is now built dynamically which may require RSelenium package with Rvest to read the content. This may require next tutorial. 
+
+ On the time of this video and even little later, the website could be read using the Rvest package only. So the simple solution now is to:
+  
+  1- Open the website of CDC in chrome or Firefox. Link to the site is 
+ `https://www.cdc.gov/coronavirus/2019-ncov/global-covid-19/world-map.html`
+  2- Save the page somewhere on your computer by CTRL+S. I saved the webpage on my Desktop temporarily with the name `World Map _ CDC.html`. 
+  3- Then read the web page by giving its path. Here you can even use the URL object like this:
+  
+  `URL <- "C:/Users/rehan/Desktop/World Map _ CDC.html" `
+
+instead of 
+
+` URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"`
+
+ Rest of the code will then work fine.
 
 
 ```R
 # Previously as in video:
 # URL <- "https://www.cdc.gov/coronavirus/2019-ncov/locations-confirmed-cases.html#map"
 # Updated on 19-03-2020
-URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"
+# URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"
+
+# Updated on-04-06-2020. 
+#  1- Open the website of CDC in chrome or Firefox. Link to the site is 
+# https://www.cdc.gov/coronavirus/2019-ncov/global-covid-19/world-map.html
+#  2- Save the page somewhere on your computer by CTRL+S. I saved the webpage on my Desktop temporarily with the name "World Map _ CDC.html". 
+#  3- Then read the web page by giving its path. Here you can even use the URL object like this:
+  
+  URL <- "C:/Users/rehan/Desktop/World Map _ CDC.html" 
+
+# instead of 
+
+# URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"
 ```
 
 **Actual Web Scraping**
