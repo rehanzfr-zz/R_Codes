@@ -58,14 +58,16 @@ This is the URL at which the list of affected countries is given. You can visit 
   
   1- Open the website of CDC in chrome or Firefox. Link to the site is 
  `https://www.cdc.gov/coronavirus/2019-ncov/global-covid-19/world-map.html`
+
   2- Save the page somewhere on your computer by CTRL+S. I saved the webpage on my Desktop temporarily with the name `World Map _ CDC.html`. 
+
   3- Then read the web page by giving its path. Here you can even use the URL object like this:
   
   `URL <- "C:/Users/rehan/Desktop/World Map _ CDC.html" `
 
 instead of 
 
-` URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"`
+`URL <- "https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/world-map.html"`
 
  Rest of the code will then work fine.
 
@@ -103,10 +105,12 @@ After reading the html we will extract the html object by using the xpath from t
 The video contains the xpath to previous version of CDC website. Previously that `xpath` was `/html/body/div[6]/main/div[3]/div/div[3]/div/div/ul` which can be seen in the video and in above lines but after the CDC has updated the website along with the list of affected countries, We now have to change the xpath in our code too. The new xpath is now `/html/body/div[6]/main/div[3]/div/div[3]/div[2]` that is updated below as well:  
 
 > UPDATE ON THIS LINE OF CODE (Dated: 25/03/2020)
+
 Now the xpath is again changed to `/html/body/div[7]/main/div[3]/div/div[3]/div[2]` so instead of previous one `/html/body/div[6]/main/div[3]/div/div[3]/div[2]`, we will use new one. 
 
 > UPDATE ON THIS LINE OF CODE (Dated: 28/04/2020)
-# Now the xpath is again changed to "/html/body/div[7]/main/div[3]/div/div[4]/div[2]" so instead of previous one "/html/body/div[7]/main/div[3]/div/div[3]/div[2]" we will use new one.
+
+ Now the xpath is again changed to "/html/body/div[7]/main/div[3]/div/div[4]/div[2]" so instead of previous one "/html/body/div[7]/main/div[3]/div/div[3]/div[2]" we will use new one.
 
 ```R
 html_nodes(xpath="/html/body/div[7]/main/div[3]/div/div[4]/div[2]") %>%
