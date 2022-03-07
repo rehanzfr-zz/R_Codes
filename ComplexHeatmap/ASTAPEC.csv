@@ -1,0 +1,149 @@
+Isolates,Location,Class-1,Class-1,Class-2,Class-2,Class-3,Class-3,Class-4,Class-4,Class-4,Class-5,Class-5,Class-5,Class-5,Class-6,Class-6,Class-6,Class-6,Class-6,Class-7,Class-7,Class-7,Class-7,Class-7,Class-8,Class-9,Class-10,Class-11
+,,SubClass-1,SubClass-2,SubClass-3,SubClass-4,SubClass-5,SubClass-6,SubClass-7,SubClass-8,SubClass-9,SubClass-10,SubClass-11,SubClass-12,SubClass-13,SubClass-14,SubClass-15,SubClass-16,SubClass-17,SubClass-18,SubClass-19,SubClass-20,SubClass-21,SubClass-22,SubClass-23,SubClass-24,SubClass-25,SubClass-26,SubClass-27
+I-1,Rawalpindi,R,R,I,S,R, R, R, R,S,S,S,R,S,R,R,R,R,I,S,R,S,S,S,R,R,R,S
+I-2,Rawalpindi,R,R,I,S,R, R, R, R,S,S,S,R,S,R,R,R,R,R,S,R,S,S,S,R,R,R,S
+I-3,Rawalpindi,R,R,I,S,R, R, R, R,S,R,R,R,S, R, R,R,R,R,S,R,S,S,S,I,R,R,S
+I-4,Rawalpindi,R,R,S,S,R, R, R, R,S,S,S,R,R, R,R,R,R,R,S,R,S,S,S,R,R,R,S
+I-5,Kashmir,R,R,S,S,R, R,I, R,S,R,R,R,S,R,R,R,R,R,S,R,S,S,S,R,R,R,S
+I-6,Kashmir,R,R,I,S,R, R,S,S,S,S,S,R,S,R,R,R,R,R,S,R,S,S,S,S,R,R,S
+I-7,Kashmir,R,R,S,I,I, R,I,R,S,S,S,R,S, R,R,R,R,R,S,R,S,S,S,S,R,R,S
+I-8,Kashmir,R,R,I,S,I, R,I,R,S,S,S,R,S, R,R,R,R,R,S,R,S,R,S,R,R,R,S
+I-9,Rawalpindi,R,R,I,S,R, R,R,R,S, R,R,R,S, R,R,R,R,R,S,R,S,S,S,I,R,R,S
+I-10,Rawalpindi,R,R,I,S,R, R, R,R,S,S,S,S,S,S,S,S,S,S,S,S,S,I,S,S,S,S,S
+I-11,Jehlum,S,S,I,S,S, S, S,S,S, S,I,S,S,S,S,S,S,S,S,I,S,S,S,S,S,R,S
+I-12,Jehlum,R,R,S,S,I, R, R,R,S,S,S,R,S,R,I,R,S,R,R,R,S,S,S,R,R,R,S
+I-13,Jehlum,R,R,I,S,R, R, R,R,S, R,R,R,I,R,R,R,R,S,R,I,S,S,S,R,R,R,S
+I-14,Jehlum,R,R,I,S,I, R,R,R,S,S,S,R,S,R,R,R,R,R,R,I,S,S,S,R,R,R,S
+I-15,Jehlum,S,I,S,I,I, R,S,S,S,S,S,R,I, R, R, R,R,R,R,R,S,I,S,I,R,R,S
+I-16,Kahuta,R,R,R,I,I, R,S,S,S,I,I,R,I, R, R,R,R,R,R,I,S,R,S,R,R,R,S
+I-17,Kahuta,I,I,I,I,I, R,S,S,S,S,S,S,S, S, S, S,S,S,S,I,S,I,S,I,S,S,S
+I-18,Kahuta,I,I,I,I,I, S,S,S,S,S,I,S,S, S, S, S,I,S,S,S,S,I,S,I,S,S,S
+I-19,Kahuta,S,S,I,S,I, S,S,S,S,S,S,S,S, S, S,S,S,S,S,S,S,I,S,R,S,R,R
+I-20,Kahuta,S,I,I,S,S, R,S,S,S,S,S,R,S, R, R,R,R,R,R,S,S,I,S,I,I,R,R
+I-21,Kashmir,S,S,S,S,I, R,S,S,S,S,S, R,S,I,I,R,S,S,R,S,S,S,S,R,R,R,S
+I-22,Kashmir,S,S,I,S,I, R,S,S,S,S,S,R,S,R, R, R,R,R,R,I,S,I,S,I,R,R,S
+I-23,Kashmir,R,R,I,I,I, R,S,S,S,I,I,R,R, R,R,R,R,R,R,R,S,I,S,R,R,R,S
+I-24,Rawalpindi,R,R,R,S,I, R,S,S,S,S,S,R,R,S,S,S,S,R,R,R,S,I,S, R,R,R,S
+I-25,Sargodha,R,R,R,S,I, R,S,S,S,S,S,R,S,I,S, R,S,R,R,R,S,I,S,R,R,R,S
+I-26,Sargodha,R,R,R,S,R, R,S,S,S,I,S, R,S,R,R,R,R,R,R,S,S,I,S,R,R,R,S
+I-27,Sargodha,R,R,R,S,R, R,S,S,S,S,S, S,S, S,S,S,S,S,S,S,S,S,S,S,S,S,S
+I-28,SaSgodha,S,S,S,S,I, S,S,S,S,S,S, S,S, S,S,S,S,S,S,S,S,I,S,R,R,R,S
+I-29,Sargodha,R,R,R,S,I,R,S,S,S,R,R,R,S,R,R,R,R,R,R,R,S,S,S,R,R,R,R
+I-30,Rawalpindi,R,R,R,I,I, R,S,S,I,S,S,R,R,R,R,R,R,R,R,I,S,I,S,S,R,R,S
+I-31,Rawalpindi,R,R,R,I,R, R,S,S,S,S,S, R,S, R,R,R,R,R,S,S,I,R,S,R, R,R,S
+I-32,Rawalpindi,R,R,R,S,I,R,S,S,S,S,S,R,I,R,R,R,R,R,S,S,S,R,I,R,R,R,S
+I-33,Peshawar,I,I,I,S,S,I,S,S,S,S,S, R,S,I,I,I,I,I,S,S,S,S,S,R,S,R,S
+I-34,Jehlum,R,R,R,S,S,R,S,S,S,S,S,R,I,R,S,S,S,R,S,S,S,S,S,S,S,R,S
+I-35,Jehlum,R,R,R,S,R, R,S,S,S, R,R,R,I,R,I,I,I,R,S,S,S,S,S,R,R,R,S
+I-36,Sargodha,S,S,S,S,I, R,S,S,S,S,S,R,S,R,I, R,I,R,I,S,S,S,S,I,R,R,S
+I-37,Sargodha,R,R,R,S,I, R,S,S,S,S, R,R,S, R, R,R,R,R,S,S,S,S,S,R,R,R,R
+I-38,Kashmir,R,R,R,S,I, R,S,S,S,S,S,R,S,R,R,R,R,R,S,S,S,S,S,R,R,R,R
+I-39,Rawalpindi,I,R,S,S,S,R,S,S,S,R,S,R,S,R,R,R,R,R,R,S,S,S,S,S,R,R,S
+I-40,Rawalpindi,R,R,I,S,R,R,S,I,S,R,R,R,S, R, R,R,R,R,S,S,S,S,S,S,R,R,S
+I-41,Rawalpindi,R,R,S,S,I,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S,S
+I-42,Rawalpindi,R,R,S,S,S,R,S,S,S,R,I,R,S,R, R,R,R,R,S,S,S,S,S,S,S,R,S
+I-43,Rawalpindi,R,R,I,S,I,R,S,I,S,R,R,R,S,R,R,R,R,R,S,S,S,S,S,S,R,R,S
+I-44,Taxila,R,I,I,S,R,R,S,S,S, R,I,R,S,R,R, R,R,R,S,S,S,S,S,R,R,R,S
+I-45,Taxila,R,R,R,S,R,R,S,S,S, R,S,R,S,R,I,R,R,R,S,S,I,I,S,R,R,R,S
+I-46,Taxila,R,R,I,S,I,R,S,S,S,I,S,R,S,R,R,R,R,R,S,S,I,I,S,S,S,R,S
+I-47,Jehlum,R,R,R,S,R,R,S,S,S,S,S,R,S,R,I,R,R,R,S,S,I,S,S,R,R,R,S
+I-48,Islamabad,R,R,S,S,I,R,S,S,S,S,S,R,S,I,I,S,I,R,I,S,I,I,S,S,R,R,S
+I-49,Islamabad,R,R,R,I,R,R,S,S,S,I,S,R,S,R,I,R,S, R,S,S,S,R,I,S,S,R,S
+I-50,Islamabad,R,R,R,S,R,R,S,S,S,R,S, R,S,R,I,R,R,R,S,S,S,S,S,I,R,R,S
+I-51,Kashmir,R,R,R,S,S,R,S,S,S,S,S,R,S,S,S,S,S,S,S,S,S,S,S,S,S,R,S
+I-52,Kashmir,R,R,I,S,I,R,S,S,S,S,S,R,S,R,R,R, R,R,R,S,R,R,I,S,I,R,S
+I-53,Islamabad,R,R,I,S,R,R,S,S,S,R, R,R,S,R,R,R,R,R,R,S,S,S,S,I,R,R,S
+I-54,Islamabad,R,R,I,S,R,R,S,S,S,R,R,R,S,R, R,R,R,I,S,S,S,S,S,I,R,R,S
+I-55,Rawalpindi,R,R,S,S,I,R,S,S,S,S,S,R,S, R, R,R, R,R,R,S,S,S,S,S,R,R,S
+I-56,Kahuta,R,R,S,S,S,S,S,S,S,S,S,I,S,S,S,S,S,S,R,S,R,R,I,S,S,R,S
+I-57,Kahuta,R,R,I,S,R,R,S,S,S,R,R,R,S,R, R,R, R,R,R,S,S,I,S,I,R,R,S
+I-58,Kahuta,R,R,R,S,S,I,S,S,S,R,I,R,R,R,R,R, R,R,S,S,S,I,S,S,R,R,S
+I-59,Kahuta,R,R,S,S,I,R,S,S,S,R, R,R,S,R, R,R,R,R,R,S,R,R,R,R,R,R,S
+I-60,Kahuta,R,R,S,S,R,R,S,S,S,S,S,R,S,S,S,R,S,R,S,S,S,R,S,I,R,R,S
+I-61,Kahuta,R,R,I,S,R,R,S,S,S,S,S,R,S,R, R,R,R,R,S,S,S,S,S,S,R,R,S
+I-62,Rawalpindi,R,R,S,S,R,R,R,S,S,S,S,R,S,R,R,R,R,R,R,S,S,S,I,S,R,R,S
+I-63,Rawalpindi,R,R,S,S,S,S,S,S,S,S,S,S,S,I,S,I,I,S,S,S, S,S,I,S,S,R,S
+I-64,Rawalpindi,R,R,S,S,R,R,S,S,S,R,S,R,S,I,S,S,S,R,R,S,S,S,S,S,R,R,S
+I-65,Taxila,R,R,S,S,R,R,S,S,S,S,S,S,S,I,I,S,S,S,S,S,S,S,S,S,S,S,S
+I-66,Taxila,R,R,S,S,I,R,S,S,S,R,S,S,S,R,I,S,S,R,R,R,S,S,S,S,S,R,S
+I-67,Taxila,R,R,I,S,R,R,S,S,S,S,S,I,S,R, R,R, R,S, R,S,S,I,I,S,R,R,S
+I-68,Taxila,R,R,S,S,I,R,S,S,S,R,S,R,S,R,R,S,R,R,R,S,S,S,S,R,S,R,S
+I-69,Kahuta,R,R,I,S,R,R,S,S,S,S,S,R,S,R,S, R,R,R,S,S,S,S,S,I,S,R,S
+I-70,Kahuta,R,R,S,S,R,R,S,S,S,R,S,R,S,I,S,S,I,S,R,S,S,S,S,S,S,R,S
+I-71,Kahuta,R,R,S,S,I,R,S,S,S,S,S,R,S,S,S,S,S,R,R,S,S,S,S,S,S,R,S
+I-72,Kahuta,R,R, R,S,I,R,S,I,S,S,S,R,S, R,R,R,R,R,R,I,S,I,S,I,S,R,S
+I-73,Kahuta,R,R,I,I,R,R,S,S,S,S,S,R,S,R,R,R, R,R,R,S,S,S,S,I,R,R,S
+I-74,Kahuta,R,R,S,S,I,R,S,S,S,S,S,R,S,S,S,S,S,R,R,S,S,S,S,S,R,R,S
+I-75,Rawalpindi,R,R,S,S,I,R,S,S,S,S,S,R,S,S,S,R,S,R,R,S,S,S,S,S,R,R,S
+I-76,Rawalpindi,R,R,S,S,I, R,S,S,S,S,S, R,S,R,I,R,R,R,R,S,S,S,S,S,R,R,S
+I-77,Rawalpindi,R,R,S,S,R,R,S,S,S,S,S,R,S,R,R,R,R,R,R,S,S,S,S,S,R,R,S
+I-78,Rawalpindi,R,R,S,S,R,R,S,S,S,I,S,R,S,R,R,R,R,R,S,S,S,S,S,S,R,R,S
+I-79,Murree,R,R,S,S,I,R,S,S,S,S,S, R,S,S,S,S,S,R,R,S,S,S,S,S,R,R,S
+I-80,Murree,R,R,S,S,R,R,S,S,S,S,S,R,S, R,R,R, R,R,R,S,S,S,S,S,R,R,S
+I-81,Murree,R,R,S,S,R,R,S,S,S,R,S,R,S,R, R,R,R,R,S,S,R,R,S,I,R,R,S
+I-82,Murree,R,R,S,S,I,R,S,S,S,S,S,R,S,R,R,R,R,R,R,S, R,R,S,R,R,R,S
+I-83,Murree,R,R,S,S,S,S,S,S,S,S,S,S,S,S,S,S, S,S,S,S,S,S,S,S,R,R,S
+I-84,Murree,R,R,S,S,I,R,S,S,S,S,I, R,S, R, R,R,R,I,S,S,S,S,S,S,S,R,S
+I-85,Rawalpindi,R,R,S,S,I,R,S,S,S,S,S,R,S,R,I,R,R,R,S,S,S,S,S,I,S,R,S
+I-86,Rawalpindi,R,R,S,S,I,R,S,S,S,S,S,R,S,R,I,R,I,R,I,S,S,S,S,S,R,R,S
+I-87,Jehlum,R,R,S,S,R,R,S,S,S,S,S,R,S,R,I,R,I,R,I,S,S,S,S,S,S,R,S
+I-88,Jehlum,R,R,S,S,R,R,S,S,S,S,S,R,S,R,I, R,I,R,S,S,S,S,S,S,R,R,S
+I-89,Kahuta,R,R,S,S,R,R,S,S,S,R,R,R,S, R,I,R,R,R,R,S,R,R,R,S,R,R,S
+I-90,Kahuta,R,R,S,S,R,R,S,S,S,R,R,R,S,R,R,R,R,R,S,S,S,S,S,S,S,R,S
+I-91,Kahuta,R,R,I,S,R,R,S,S,S,S,S,R,S,R,R,R,R,R,R,I,S,S,S,I,R,R,S
+I-92,Kahuta,R,R,S,S,R,R,S,S,S,S,S,R,S, R,R,R,R,R,R,I,S,S,S,I,R,R,S
+I-93,Rawalpindi,R,R,R,S,R,R,R,S,S,R,R,R,S,R,R,R,R,R,R,R,S,S,S,R,R,R,S
+I-94,Rawalpindi,R,R,I,S,I,R, R,S,S,S,S,R,S,S,S,R,S,R,S,I,S,S,S,I,R,R,S
+I-95,Rawalpindi,R,R,R,S,I,R, R,S,S,R,I,R,S, R,R,R,R,S,R,R,S,S,I,R,I,R,S
+I-96,Islamabad,R,R,R,S,I,I,S,S,S,R,I,R,S,S,S,S,S,S,R,I,S,S,S,S,R,R,S
+I-97,Islamabad,R,R,R,S,I,R,S,S,S,R,R,R,S,R,R,R, R,R,R,R,S,S,S,S, R,R,S
+I-98,Islamabad,R,R,R,S,I,R,S,S,S,S,S,R,S,S,S,I,S,S,R,S,R, R, R,S,R,R,S
+I-99,Islamabad,R,R,R,S,S,S,S,S,S,R,I,R,S,S,S,S,S,S,R,I,S,S,S,S,S,R,S
+I-100,Kashmir,R,R,R,S,R,R,S,S,S,R,R,R,S,R,S,R,R,R,R,S,S,S,S,S,R,R,S
+I-101,Kashmir,R,R,S,S,R,R,R,S,S,S,S,R,S,R,R,R,R,R,R,S,S,S,I,S,R,R,S
+I-102,Peshawar,R,R,I,S,I,R,S,S,S,R,R,R,S,R,R,R,R,R,I,S,S,I,I,I,R,R,S
+I-103,Peshawar,R,R,S,S,I,S,S,S,S,I,I,S,S,S,S,S,S,S,S,S,S,S,R,I,R,R,S
+I-104,Peshawar,R,R,S,S,R,R,S,S,S,S,S,R,S,S,S,S,S,R,R,S,R,R,R,S,S,R,S
+I-105,Peshawar,R,R,I,S,R,R,S,S,S,R,R,R,I,R,R,R,R,R,I,R,S,I,I,R,R,R,S
+I-106,Peshawar,R,R,S,S,S,R,S,S,S,R,R,R,S,R,R,R,R,R,R,R,R,R,R,S,R,R,S
+I-107,Peshawar,R,R,S,I,R,R,S,I,S,R,I,R,S,R,R,R,R,R,S,S,S,I,S,S,R,R,S
+I-108,Peshawar,R,R,R,S,R,R,S, R,S,R,I,R,S,R,R,R,R,R,S,R,S,R,I,S,R,R,S
+I-109,Peshawar,R,R,S,S,R,R,S,I,S,R,R,R,S,S,S,S,S,R,S,S,S,I,S,I,R,R,S
+I-110,Peshawar,R,R,R,S,R,R,S,I,S,R,R,R,S,R,R,S,R,R,S,S,I,R,S,I,R,R,S
+I-111,Peshawar,R,R,S,S,S,S,S,I,S,S,S,I,S,S,S,S,S,S,R,S,R,R,S,S,S,R,S
+I-112,Rawalpindi,R,R,S,S,R,R,S,I,S,R, R,R,S,S,S,S,S,R,I,S,S,S,S,S,R,R,S
+I-113,Sargodha,R,R,S,S,S,R,S,I,S,S,S,R,S,R,R,R, R,R,R,S,S,S,S,S,R,R,R
+I-114,Sargodha,R,R,S,S,I,R,S,I,S,S,S,R,S,R,R,R, R,R,S,S,S,S,S,I,R,R,S
+I-115,Sargodha,R,R,S,S,R,R,S,I,S,S,S,S,S,I,S, R,I,S,S,S,S,S,S,R,S,R,S
+I-116,Sargodha,R,R,S,S,I,R,S,I,S,S,S,I,S,R,R,R,S,S,S,S,S,S,S,I,R,R,S
+I-117,Sargodha,R,R,S,S,I,R,S,I,S,S,S,R,S,R,R,R, R,R,S,S,S,S,S,S,R,R,S
+I-118,Sargodha,R,R,S,S,R,R,S,I,S,R,I,R,S, R,I,R,R,R,S,S,S,S,S,S,R,R,S
+I-119,Sargodha,S,S,S,S,R,R,S,I,S,S,S,S,S,S,S,R,S,S,S,S,S,S,S,S,R,R,S
+I-120,Sargodha,R,R,S,S,I,S,S, S,S,S,S,S,S,S,S,S, S,R,S,S,S,S,S,S,R,R,S
+I-121,Kashmir,I,S,S,S,I,R,S,I,S,S,S,S,S,S,S,S,S,S,R,S,S,S,R,S,S,R,S
+I-122,Kashmir,R,R,S,S,S,R,S,R,S,S,S,R,S,S,S,R,S,S,R,S, R, R,S,S,R,R,S
+I-123,Kashmir,R,R,S,S,I,R,S,I,S,S,S, R,S,I,S,R,S,S,R,S,S,R,S,S,R,R,S
+I-124,Taxila,R,R,S,S,I,R,S,I,S,S,S, R,S,R,S,R,R,R,S,S,S,S,S,S,R,R,S
+I-125,Taxila,R,R,S,S,I,R,S,I,S,S,S,R,S, R, R,R, R,R,S,S,S,S,S,S,S, R,S
+I-126,Taxila,R,R,S,S,R,R,S,I,S,S,S,I,S,I,S,I,S,S,S,S,S,S,S,S,S,R,S
+I-127,Taxila,R,R,S,S,I,R,S,I,S,S,S,R,S,R,R,R,R,R,S,S,S,S,S,S,R,R,S
+I-128,Rawalpindi,R,R,I,S,R,R,S, R,S,S,S,R,R,R,R,R,R,R,I,S,S,R,S,R,S,R,S
+I-129,Rawalpindi,R,R,S,S,R,R,S, R,S,S,S,R,S,I,I,S,S,I,S,S,S,I,S,R,I,R,S
+I-130,Rawalpindi,R,R,I,S,R,R,S,R,S,R,R, R,S,S,S,S,S,R,S,S,S,I,S,I,R,R,S
+I-131,Rawalpindi,R,R,I,S,R,R,S, R,S,S,S, R,I,R, R,R, R,R,I,S,I,R,S,S,R,R,S
+I-132,Rawalpindi,R,R,I,S,I,R,S,R,S,S,S, R,S, R, R,R,R,R,I,I,S,R,S,S,R,R,S
+I-133,Jehlum,R,R,I,S,I,R,S,I,S,S,S,R,S,R,R,R,R,R,S,S,S,S,S,S,R,R,S
+I-134,Jehlum,R,R,S,S,I,R,S,I,S,S,S,R,S,S,S,I,S,I,I,S,S,S,S,S,S,R,S
+I-135,Jehlum,R,R,S,S,I,R,S,I,S,S,S,R,S,R,R,R,I,R,I,S,S,S,S,S,R,R,S
+I-136,Jehlum,R,R,S,S,R,R,S,S,S,S,S,I,S,I,S,I,S,S,S,S,S,S,S,I,S,R,S
+I-137,Jehlum,R,R,S,S,R,R,S,R,S,S,I,I,S,S,S,S,S,S,S,S,S,S,S,S,S,R,S
+I-138,Jehlum,R,R,S,S,I,S,S, S,S,S,S,S,I,S,I,I,I,S,S,S,S,S,S,S,I,S,S
+I-139,Kashmir,R,R,S,S,I,R,S,R,S,R, R, R,S,R,R,R,R,R,S,S,S,S,S,S,R,R,S
+I-140,Islamabad,R,R,I,S,R,R,S, R,S,S,S,R,S,R,R,R, R,R,I,S,S,R,S,S,R,R,S
+I-141,Islamabad,R,R,S,I,R,R,S, R,S,S,S,R,S,R,R,R,R,R,S,S,S,S,S,S,R,R,S
+I-142,Islamabad,R,R,S,S,R,R,S,I,S,S,S,R,S,R,I,R,R,R,I,S,S,I,S,S,R,R,S
+I-143,Islamabad,R,R,S,S,I,R,S,I,S,S,S, R,S,I,I,I,I,R,S,S,S,S,S,S,S,R,S
+I-144,Rawalpindi,R,R,S,S,I,R,S,I,S,S,S,R,S,R,I,R, R,R,I,S,S,I,S,S,R,R,S
+I-145,Rawalpindi,R,R,S,S,I,S,S, S,S,S,S,S,S, S, S,S,S,S,S,S,S,I,S,I,S,S,S
+I-146,Rawalpindi,R,R,S,S,R,R,S, R,S,S,S, R,S,R,I,R, R,R,S,S,S,I,S,I,R,R,S
+I-147,Rawalpindi,R,R,S,S,I,R,S,I,S,S,S,R,S,R,I,R,R,R,R,S,S,S,S,S,S,R,S
